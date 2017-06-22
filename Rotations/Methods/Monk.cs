@@ -140,7 +140,7 @@ namespace UltimaCR.Rotations
         private async Task<bool> PerfectBalance()
         {
             if (Ultima.UltSettings.MonkPerfectBalance &&
-                Actionmanager.CanCast(MySpells.Bootshine.Name, Core.Player.CurrentTarget))
+                ActionManager.CanCast(MySpells.Bootshine.Name, Core.Player.CurrentTarget))
             {
                 if (await MySpells.PerfectBalance.Cast())
                 {

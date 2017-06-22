@@ -29,7 +29,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> VorpalThrust()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.TrueThrust.Name)
+            if (ActionManager.LastSpell.Name == MySpells.TrueThrust.Name)
             {
                 return await MySpells.VorpalThrust.Cast();
             }
@@ -43,9 +43,9 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> ImpulseDrive()
         {
-            if (Actionmanager.HasSpell(MySpells.Disembowel.Name) &&
+            if (ActionManager.HasSpell(MySpells.Disembowel.Name) &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.Disembowel.Name, false, 5000) ||
-                Actionmanager.HasSpell(MySpells.ChaosThrust.Name) &&
+                ActionManager.HasSpell(MySpells.ChaosThrust.Name) &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.ChaosThrust.Name, true, 5000))
             {
                 return await MySpells.ImpulseDrive.Cast();
@@ -82,7 +82,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> LifeSurge()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.TrueThrust.Name)
+            if (ActionManager.LastSpell.Name == MySpells.TrueThrust.Name)
             {
                 return await MySpells.LifeSurge.Cast();
             }
@@ -100,11 +100,11 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> FullThrust()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.VorpalThrust.Name)
+            if (ActionManager.LastSpell.Name == MySpells.VorpalThrust.Name)
             {
                 if (await MySpells.LifeSurge.Cast())
                 {
-                    await Coroutine.Wait(3000, () => Actionmanager.CanCast(MySpells.FullThrust.Name, Core.Player.CurrentTarget));
+                    await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.FullThrust.Name, Core.Player.CurrentTarget));
                 }
                 return await MySpells.FullThrust.Cast();
             }
@@ -127,7 +127,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Disembowel()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.ImpulseDrive.Name)
+            if (ActionManager.LastSpell.Name == MySpells.ImpulseDrive.Name)
             {
                 return await MySpells.Disembowel.Cast();
             }
@@ -141,7 +141,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> RingOfThorns()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HeavyThrust.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HeavyThrust.Name)
             {
                 return await MySpells.RingOfThorns.Cast();
             }
@@ -150,7 +150,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> ChaosThrust()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.Disembowel.Name)
+            if (ActionManager.LastSpell.Name == MySpells.Disembowel.Name)
             {
                 return await MySpells.ChaosThrust.Cast();
             }
@@ -294,7 +294,7 @@ namespace UltimaCR.Rotations
         private async Task<bool> PowerSurge()
         {
             if (Ultima.UltSettings.DragoonPowerSurge &&
-                Actionmanager.CanCast(MySpells.Jump.Name, Core.Player.CurrentTarget))
+                ActionManager.CanCast(MySpells.Jump.Name, Core.Player.CurrentTarget))
             {
                 return await MySpells.PowerSurge.Cast();
             }

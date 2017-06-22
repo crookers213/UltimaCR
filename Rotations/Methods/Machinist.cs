@@ -66,7 +66,7 @@ namespace UltimaCR.Rotations
             if (Core.Player.HasAura(862))
             {
                 if (Core.Player.HasAura(857) ||
-                    !Actionmanager.HasSpell(MySpells.CleanShot.Name) &&
+                    !ActionManager.HasSpell(MySpells.CleanShot.Name) &&
                     Core.Player.HasAura(856))
                 {
                     return await MySpells.Reassemble.Cast();
@@ -134,7 +134,7 @@ namespace UltimaCR.Rotations
                 {
                     if (await MySpells.Reassemble.Cast())
                     {
-                        await Coroutine.Wait(3000, () => Actionmanager.CanCast(MySpells.CleanShot.Name, Core.Player.CurrentTarget));
+                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.CleanShot.Name, Core.Player.CurrentTarget));
                     }
                 }
                 return await MySpells.CleanShot.Cast();
@@ -156,7 +156,7 @@ namespace UltimaCR.Rotations
                 Core.Player.CurrentTarget.CanAttack)
             {
                 if (Ultima.UltSettings.MachinistRook ||
-                    !Actionmanager.HasSpell(MySpells.BishopAutoturret.Name))
+                    !ActionManager.HasSpell(MySpells.BishopAutoturret.Name))
                 {
                     if (Core.Player.Pet == null ||
                         Core.Player.Pet.Distance2D(Core.Player.CurrentTarget) - Core.Player.CurrentTarget.CombatReach - Core.Player.Pet.CombatReach > 20)

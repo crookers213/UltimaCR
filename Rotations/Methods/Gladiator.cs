@@ -28,7 +28,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> SavageBlade()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.FastBlade.Name)
+            if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
             {
                 return await MySpells.SavageBlade.Cast();
             }
@@ -76,7 +76,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> RageOfHalone()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.SavageBlade.Name)
+            if (ActionManager.LastSpell.Name == MySpells.SavageBlade.Name)
             {
                 return await MySpells.RageOfHalone.Cast();
             }

@@ -94,13 +94,13 @@ namespace UltimaCR.Rotations
                     !pm.HasAura(MySpells.Raise.Name));
 
                 if (target != null &&
-                    Actionmanager.CanCast(MySpells.Raise.Name, target))
+                    ActionManager.CanCast(MySpells.Raise.Name, target))
                 {
-                    if (Actionmanager.CanCast(MySpells.CrossClass.Swiftcast.Name, Core.Player))
+                    if (ActionManager.CanCast(MySpells.CrossClass.Swiftcast.Name, Core.Player))
                     {
                         if (await MySpells.CrossClass.Swiftcast.Cast())
                         {
-                            await Coroutine.Wait(3000, () => Actionmanager.CanCast(MySpells.Raise.Name, target) &&
+                            await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Raise.Name, target) &&
                                                              Core.Player.HasAura(MySpells.CrossClass.Swiftcast.Name));
                         }
                     }

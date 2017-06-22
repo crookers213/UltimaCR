@@ -28,7 +28,7 @@ namespace UltimaCR.Rotations
             }
             if (!UmbralAura &&
                 LowMP &&
-                !Actionmanager.HasSpell(MySpells.BlizzardIII.Name))
+                !ActionManager.HasSpell(MySpells.BlizzardIII.Name))
             {
                 return await MySpells.Blizzard.Cast();
             }
@@ -37,7 +37,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Fire()
         {
-            if (!Actionmanager.HasSpell(MySpells.FireIII.Name))
+            if (!ActionManager.HasSpell(MySpells.FireIII.Name))
             {
                 if (UmbralAura &&
                     Core.Player.CurrentManaPercent >= 90)
@@ -76,7 +76,7 @@ namespace UltimaCR.Rotations
                     return await MySpells.Transpose.Cast();
                 }
             }
-            if (!Actionmanager.HasSpell(MySpells.BlizzardIII.Name) &&
+            if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
                 LowMP)
             {
                 return await MySpells.Transpose.Cast();
@@ -89,7 +89,7 @@ namespace UltimaCR.Rotations
             if (UmbralAura &&
                 Core.Player.CurrentManaPercent < 100)
             {
-                if (!Actionmanager.HasSpell(MySpells.BlizzardIII.Name) &&
+                if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
                     !Core.Player.CurrentTarget.HasAura("Thunder", true, 3000))
                 {
                     return await MySpells.Thunder.Cast();
@@ -103,7 +103,7 @@ namespace UltimaCR.Rotations
             if (!AstralAura &&
                 !UmbralAura)
             {
-                if (!Actionmanager.HasSpell(MySpells.ThunderII.Name) &&
+                if (!ActionManager.HasSpell(MySpells.ThunderII.Name) &&
                     !Core.Player.CurrentTarget.HasAura("Thunder", true))
                 {
                     return await MySpells.Thunder.Cast();
@@ -135,7 +135,7 @@ namespace UltimaCR.Rotations
             {
                 return await MySpells.Scathe.Cast();
             }
-            if (!Actionmanager.HasSpell(MySpells.BlizzardIII.Name) &&
+            if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
                 UmbralAura &&
                 Core.Player.CurrentManaPercent < 100)
             {
@@ -164,7 +164,7 @@ namespace UltimaCR.Rotations
             if (UmbralAura &&
                 Core.Player.CurrentManaPercent < 100)
             {
-                if (!Actionmanager.HasSpell(MySpells.BlizzardIII.Name) &&
+                if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
                     !Core.Player.CurrentTarget.HasAura("Thunder", true, 3000))
                 {
                     return await MySpells.Thunder.Cast();
@@ -178,7 +178,7 @@ namespace UltimaCR.Rotations
             if (!AstralAura &&
                 !UmbralAura)
             {
-                if (!Actionmanager.HasSpell(MySpells.ThunderIII.Name) &&
+                if (!ActionManager.HasSpell(MySpells.ThunderIII.Name) &&
                     !Core.Player.CurrentTarget.HasAura("Thunder", true))
                 {
                     return await MySpells.Thunder.Cast();
@@ -600,7 +600,7 @@ namespace UltimaCR.Rotations
                         Ultima.LastSpell.Name == MySpells.FireII.Name ||
                         !Core.Player.HasAura("Thundercloud", false, 5000))
                     {
-                        if (!Actionmanager.HasSpell(MySpells.ThunderIII.Name))
+                        if (!ActionManager.HasSpell(MySpells.ThunderIII.Name))
                         {
                             return await MySpells.ThunderII.Cast();
                         }
@@ -612,7 +612,7 @@ namespace UltimaCR.Rotations
                     Spell.RecentSpell.RemoveAll(t => DateTime.UtcNow > t);
                     if (!RecentThunder)
                     {
-                        if (!Actionmanager.HasSpell(MySpells.ThunderIII.Name))
+                        if (!ActionManager.HasSpell(MySpells.ThunderIII.Name))
                         {
                             return await MySpells.ThunderII.Cast();
                         }

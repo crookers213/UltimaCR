@@ -28,7 +28,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> SkullSunder()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HeavySwing.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HeavySwing.Name)
             {
                 return await MySpells.SkullSunder.Cast();
             }
@@ -39,13 +39,13 @@ namespace UltimaCR.Rotations
         {
             if (!Core.Player.CurrentTarget.HasAura(MySpells.Fracture.Name, true, 4000))
             {
-                if (!Actionmanager.HasSpell(MySpells.StormsEye.Name) &&
-                    !Actionmanager.HasSpell(MySpells.StormsPath.Name) ||
+                if (!ActionManager.HasSpell(MySpells.StormsEye.Name) &&
+                    !ActionManager.HasSpell(MySpells.StormsPath.Name) ||
 
-                    !Actionmanager.HasSpell(MySpells.StormsEye.Name) &&
+                    !ActionManager.HasSpell(MySpells.StormsEye.Name) &&
                     Core.Player.CurrentTarget.HasAura(MySpells.StormsPath.Name, false, 8000) ||
                     
-                    !Actionmanager.HasSpell(MySpells.StormsPath.Name) &&
+                    !ActionManager.HasSpell(MySpells.StormsPath.Name) &&
                     (Core.Player.CurrentTarget.HasAura(MySpells.StormsEye.Name, false, 8000) ||
                     Core.Player.CurrentTarget.HasAura("Dancing Edge")) ||
 
@@ -89,13 +89,13 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Maim()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HeavySwing.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HeavySwing.Name)
             {
                 if (!Core.Player.HasAura(MySpells.Maim.Name, true, 4000) ||
-                    Actionmanager.HasSpell(MySpells.StormsEye.Name) &&
+                    ActionManager.HasSpell(MySpells.StormsEye.Name) &&
                     !Core.Player.CurrentTarget.HasAura(MySpells.StormsEye.Name, false, 8000) &&
                     !Core.Player.CurrentTarget.HasAura("Dancing Edge") ||
-                    Actionmanager.HasSpell(MySpells.StormsPath.Name) &&
+                    ActionManager.HasSpell(MySpells.StormsPath.Name) &&
                     !Core.Player.CurrentTarget.HasAura(MySpells.StormsPath.Name, false, 8000))
                 {
                     return await MySpells.Maim.Cast();
@@ -108,8 +108,8 @@ namespace UltimaCR.Rotations
         {
             if (Core.Player.HasAura(MySpells.Maim.Name, true, 4000))
             {
-                if (!Actionmanager.HasSpell(MySpells.StormsEye.Name) ||
-                    Actionmanager.HasSpell(MySpells.StormsEye.Name) &&
+                if (!ActionManager.HasSpell(MySpells.StormsEye.Name) ||
+                    ActionManager.HasSpell(MySpells.StormsEye.Name) &&
                     (Core.Player.CurrentTarget.HasAura(MySpells.StormsEye.Name, false, 8000) ||
                     Core.Player.CurrentTarget.HasAura("Dancing Edge")))
                 {
@@ -130,7 +130,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> ButchersBlock()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.SkullSunder.Name)
+            if (ActionManager.LastSpell.Name == MySpells.SkullSunder.Name)
             {
                 return await MySpells.ButchersBlock.Cast();
             }
@@ -144,7 +144,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> StormsPath()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.Maim.Name)
+            if (ActionManager.LastSpell.Name == MySpells.Maim.Name)
             {
                 return await MySpells.StormsPath.Cast();
             }
@@ -163,7 +163,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> StormsEye()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.Maim.Name &&
+            if (ActionManager.LastSpell.Name == MySpells.Maim.Name &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.StormsEye.Name, false, 8000) &&
                 !Core.Player.CurrentTarget.HasAura("Dancing Edge"))
             {

@@ -94,7 +94,7 @@ namespace UltimaCR.Rotations
             {
                 return await MySpells.HawksEye.Cast();
             }
-            if (!Actionmanager.HasSpell(MySpells.CrossClass.BloodForBlood.Name))
+            if (!ActionManager.HasSpell(MySpells.CrossClass.BloodForBlood.Name))
             {
                 return await MySpells.HawksEye.Cast();
             }
@@ -301,13 +301,13 @@ namespace UltimaCR.Rotations
         {
             if (Ultima.UltSettings.ArcherBloodForBlood)
             {
-                if (Actionmanager.HasSpell(MySpells.Barrage.Name) &&
-                    Actionmanager.CanCast(MySpells.HawksEye.Name, Core.Player) &&
-                    Actionmanager.CanCast(MySpells.Barrage.Name, Core.Player))
+                if (ActionManager.HasSpell(MySpells.Barrage.Name) &&
+                    ActionManager.CanCast(MySpells.HawksEye.Name, Core.Player) &&
+                    ActionManager.CanCast(MySpells.Barrage.Name, Core.Player))
                 {
                     return await MySpells.CrossClass.BloodForBlood.Cast();
                 }
-                if (!Actionmanager.HasSpell(MySpells.Barrage.Name))
+                if (!ActionManager.HasSpell(MySpells.Barrage.Name))
                 {
                     return await MySpells.CrossClass.BloodForBlood.Cast();
                 }

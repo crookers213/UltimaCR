@@ -28,7 +28,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> SkullSunder()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HeavySwing.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HeavySwing.Name)
             {
                 return await MySpells.SkullSunder.Cast();
             }
@@ -74,7 +74,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Maim()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HeavySwing.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HeavySwing.Name)
             {
                 //if (!Core.Player.CurrentTarget.HasAura(MySpells.StormsEye.Name, false, 4000) &&
                 //    !Core.Player.CurrentTarget.HasAura("Dancing Edge", false, 4000) ||
@@ -104,7 +104,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> ButchersBlock()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.SkullSunder.Name)
+            if (ActionManager.LastSpell.Name == MySpells.SkullSunder.Name)
             {
                 return await MySpells.ButchersBlock.Cast();
             }
@@ -118,7 +118,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> StormsPath()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.Maim.Name)
+            if (ActionManager.LastSpell.Name == MySpells.Maim.Name)
             {
                 return await MySpells.StormsPath.Cast();
             }
@@ -137,7 +137,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> StormsEye()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.Maim.Name &&
+            if (ActionManager.LastSpell.Name == MySpells.Maim.Name &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.StormsEye.Name, false, 4000) &&
                 !Core.Player.CurrentTarget.HasAura("Dancing Edge", false, 4000))
             {

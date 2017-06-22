@@ -29,7 +29,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> SpinningSlash()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HardSlash.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HardSlash.Name)
             {
                 return await MySpells.SpinningSlash.Cast();
             }
@@ -67,7 +67,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> SyphonStrike()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.HardSlash.Name)
+            if (ActionManager.LastSpell.Name == MySpells.HardSlash.Name)
             {
                 return await MySpells.SyphonStrike.Cast();
             }
@@ -103,7 +103,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> PowerSlash()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.SpinningSlash.Name)
+            if (ActionManager.LastSpell.Name == MySpells.SpinningSlash.Name)
             {
                 return await MySpells.PowerSlash.Cast();
             }
@@ -136,19 +136,19 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Souleater()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.SyphonStrike.Name)
+            if (ActionManager.LastSpell.Name == MySpells.SyphonStrike.Name)
             {
                 if (Ultima.UltSettings.DarkKnightDarkArts &&
                     !Core.Player.HasAura(MySpells.DarkArts.Name) &&
                     Core.Player.TargetDistance(3, false) &&
                     Core.Player.CurrentManaPercent >= 50 &&
-                    (!Actionmanager.HasSpell(MySpells.Delirium.Name) ||
+                    (!ActionManager.HasSpell(MySpells.Delirium.Name) ||
                     Core.Player.CurrentTarget.HasAura(MySpells.Delirium.Name, false, 4000) ||
                     Core.Player.CurrentTarget.HasAura("Dragon Kick")))
                 {
                     if (await MySpells.DarkArts.Cast())
                     {
-                        await Coroutine.Wait(3000, () => Actionmanager.CanCast(MySpells.Souleater.Name, Core.Player.CurrentTarget));
+                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Souleater.Name, Core.Player.CurrentTarget));
                     }
                 }
                 return await MySpells.Souleater.Cast();
@@ -179,7 +179,7 @@ namespace UltimaCR.Rotations
         private async Task<bool> Delirium()
         {
             if (Ultima.UltSettings.DarkKnightDelirium &&
-                Actionmanager.LastSpell.Name == MySpells.SyphonStrike.Name &&
+                ActionManager.LastSpell.Name == MySpells.SyphonStrike.Name &&
                 !Core.Player.HasAura(MySpells.DarkArts.Name) &&
                 !Core.Player.CurrentTarget.HasAura(MySpells.Delirium.Name, false, 4000) &&
                 !Core.Player.CurrentTarget.HasAura("Dragon Kick"))

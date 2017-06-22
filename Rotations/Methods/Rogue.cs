@@ -29,7 +29,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> GustSlash()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.SpinningEdge.Name)
+            if (ActionManager.LastSpell.Name == MySpells.SpinningEdge.Name)
             {
                 return await MySpells.GustSlash.Cast();
             }
@@ -39,7 +39,7 @@ namespace UltimaCR.Rotations
         private async Task<bool> KissOfTheWasp()
         {
             if (Ultima.UltSettings.RogueKissOfTheWasp ||
-                !Actionmanager.HasSpell(MySpells.KissOfTheViper.Name))
+                !ActionManager.HasSpell(MySpells.KissOfTheViper.Name))
             {
                 if (!Core.Player.HasAura(MySpells.KissOfTheWasp.Name))
                 {
@@ -51,7 +51,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Mutilate()
         {
-            if (!Actionmanager.HasSpell(MySpells.ShadowFang.Name) ||
+            if (!ActionManager.HasSpell(MySpells.ShadowFang.Name) ||
                 Core.Player.CurrentTarget.HasAura(MySpells.ShadowFang.Name, true, 4000))
             {
                 if (!Core.Player.CurrentTarget.HasAura("Mutilation", true, 4000))
@@ -111,7 +111,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> AeolianEdge()
         {
-            if (Actionmanager.LastSpell.Name == MySpells.GustSlash.Name)
+            if (ActionManager.LastSpell.Name == MySpells.GustSlash.Name)
             {
                 return await MySpells.AeolianEdge.Cast();
             }
@@ -143,7 +143,7 @@ namespace UltimaCR.Rotations
             {
                 if (!Core.Player.CurrentTarget.HasAura(MySpells.DancingEdge.Name, false, 6000) &&
                     !Core.Player.CurrentTarget.HasAura("Storm's Eye", false, 6000) &&
-                    Actionmanager.LastSpell.Name == MySpells.GustSlash.Name)
+                    ActionManager.LastSpell.Name == MySpells.GustSlash.Name)
                 {
                     return await MySpells.DancingEdge.Cast();
                 }
@@ -163,7 +163,7 @@ namespace UltimaCR.Rotations
                 !Ultima.UltSettings.RogueDancingEdge)
             {
                 if (!Core.Player.CurrentTarget.HasAura(MySpells.ShadowFang.Name, true, 4000) &&
-                    Actionmanager.LastSpell.Name == MySpells.SpinningEdge.Name)
+                    ActionManager.LastSpell.Name == MySpells.SpinningEdge.Name)
                 {
                     return await MySpells.ShadowFang.Cast();
                 }

@@ -171,6 +171,12 @@ namespace UltimaCR.Spells
                             return false;
                         }
                         break;
+                    case ClassJobType.Samurai:
+                        if (EnemyCount < 3)
+                        {
+                            return false;
+                        }
+                        break;
                 }
             }
 
@@ -262,7 +268,7 @@ namespace UltimaCR.Spells
 
             if (SpellType == SpellType.Card)
             {
-                if (!await Coroutine.Wait(1000, () => Actionmanager.DoAction(ID, target)))
+                if (!await Coroutine.Wait(1000, () => ActionManager.DoAction(ID, target)))
                 {
                     return false;
                 }
@@ -310,7 +316,7 @@ namespace UltimaCR.Spells
 
                 if (BotManager.Current.IsAutonomous)
                 {
-                    switch (Actionmanager.InSpellInRangeLOS(2247, target))
+                    switch (ActionManager.InSpellInRangeLOS(2247, target))
                     {
                         case SpellRangeCheck.ErrorNotInLineOfSight:
                             Navigator.MoveTo(target.Location);
@@ -350,14 +356,14 @@ namespace UltimaCR.Spells
 
                 if (Ultima.UltSettings.QueueSpells)
                 {
-                    if (!Actionmanager.CanCastOrQueue(DataManager.GetSpellData(ID), target))
+                    if (!ActionManager.CanCastOrQueue(DataManager.GetSpellData(ID), target))
                     {
                         return false;
                     }
                 }
                 else
                 {
-                    if (!Actionmanager.CanCast(ID, target))
+                    if (!ActionManager.CanCast(ID, target))
                     {
                         return false;
                     }
@@ -378,7 +384,7 @@ namespace UltimaCR.Spells
 
                 #region DoAction
 
-                if (!await Coroutine.Wait(1000, () => Actionmanager.DoAction(ID, target)))
+                if (!await Coroutine.Wait(1000, () => ActionManager.DoAction(ID, target)))
                 {
                     return false;
                 }
@@ -387,7 +393,7 @@ namespace UltimaCR.Spells
 
                 #region Wait For Cast Completion
 
-                await Coroutine.Wait(2000, () => !Actionmanager.CanCast(ID, target));
+                await Coroutine.Wait(2000, () => !ActionManager.CanCast(ID, target));
 
                 #endregion
 
@@ -413,7 +419,7 @@ namespace UltimaCR.Spells
 
             #region HasSpell Check
 
-            if (!Actionmanager.HasSpell(ID))
+            if (!ActionManager.HasSpell(ID))
             {
                 return false;
             }
@@ -424,7 +430,7 @@ namespace UltimaCR.Spells
 
             if (BotManager.Current.IsAutonomous)
             {
-                switch (Actionmanager.InSpellInRangeLOS(ID, target))
+                switch (ActionManager.InSpellInRangeLOS(ID, target))
                 {
                     case SpellRangeCheck.ErrorNotInLineOfSight:
                         Navigator.MoveTo(target.Location);
@@ -457,7 +463,7 @@ namespace UltimaCR.Spells
                     Core.Player.IsMounted)
                 {
                     Logging.Write(Colors.Yellow, @"[Ultima] Dismounting...");
-                    Actionmanager.Dismount();
+                    ActionManager.Dismount();
                     await Coroutine.Sleep(1000);
                 }
             }
@@ -479,7 +485,7 @@ namespace UltimaCR.Spells
             {
                 case CastType.TargetLocation:
                 case CastType.SelfLocation:
-                    if (!Actionmanager.CanCastLocation(ID, target.Location))
+                    if (!ActionManager.CanCastLocation(ID, target.Location))
                     {
                         return false;
                     }
@@ -487,14 +493,14 @@ namespace UltimaCR.Spells
                 default:
                     if (Ultima.UltSettings.QueueSpells)
                     {
-                        if (!Actionmanager.CanCastOrQueue(DataManager.GetSpellData(ID), target))
+                        if (!ActionManager.CanCastOrQueue(DataManager.GetSpellData(ID), target))
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (!Actionmanager.CanCast(ID, target))
+                        if (!ActionManager.CanCast(ID, target))
                         {
                             return false;
                         }
@@ -616,20 +622,26 @@ namespace UltimaCR.Spells
                         return false;
                     }
                     break;
+                    case ClassJobType.Samurai:
+                    if (DataManager.GetSpellData(8821).Cooldown.TotalMilliseconds <= 1000)
+                    {
+                        return false;
+                    }
+                    break;
                 }
             }
             #endregion
 
             #region Cleric Stance Check
 
-            if (Actionmanager.HasSpell(122))
+            if (ActionManager.HasSpell(122))
             {
                 switch (Core.Player.HasAura("Cleric Stance"))
                 {
                     case true:
                         if (SpellType == SpellType.Heal)
                         {
-                            await Coroutine.Wait(1000, () => Actionmanager.DoAction(122, Core.Player));
+                            await Coroutine.Wait(1000, () => ActionManager.DoAction(122, Core.Player));
                             Logging.Write(Colors.OrangeRed, @"[Ultima] Removing Cleric Stance");
                             await Coroutine.Wait(3000, () => !Core.Player.HasAura(145));
                         }
@@ -638,7 +650,7 @@ namespace UltimaCR.Spells
                         if (SpellType == SpellType.Damage ||
                             SpellType == SpellType.DoT)
                         {
-                            await Coroutine.Wait(1000, () => Actionmanager.DoAction(122, Core.Player));
+                            await Coroutine.Wait(1000, () => ActionManager.DoAction(122, Core.Player));
                             Logging.Write(Colors.OrangeRed, @"[Ultima] Ability: Cleric Stance");
                             await Coroutine.Wait(3000, () => Core.Player.HasAura(145));
                         }
@@ -660,14 +672,14 @@ namespace UltimaCR.Spells
                         var tarloc = target.Location;
                         var rndloc = tarloc + rndxz;
 
-                        if (!await Coroutine.Wait(1000, () => Actionmanager.DoActionLocation(ID, rndloc)))
+                        if (!await Coroutine.Wait(1000, () => ActionManager.DoActionLocation(ID, rndloc)))
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (!await Coroutine.Wait(1000, () => Actionmanager.DoActionLocation(ID, target.Location)))
+                        if (!await Coroutine.Wait(1000, () => ActionManager.DoActionLocation(ID, target.Location)))
                         {
                             return false;
                         }
@@ -682,21 +694,21 @@ namespace UltimaCR.Spells
                         var tarloc = target.Location;
                         var rndloc = tarloc + rndxz;
 
-                        if (!await Coroutine.Wait(1000, () => Actionmanager.DoActionLocation(ID, rndloc)))
+                        if (!await Coroutine.Wait(1000, () => ActionManager.DoActionLocation(ID, rndloc)))
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (!await Coroutine.Wait(1000, () => Actionmanager.DoActionLocation(ID, target.Location)))
+                        if (!await Coroutine.Wait(1000, () => ActionManager.DoActionLocation(ID, target.Location)))
                         {
                             return false;
                         }
                     }
                     break;
                 default:
-                    if (!await Coroutine.Wait(1000, () => Actionmanager.DoAction(ID, target)))
+                    if (!await Coroutine.Wait(1000, () => ActionManager.DoAction(ID, target)))
                     {
                         return false;
                     }
@@ -710,10 +722,10 @@ namespace UltimaCR.Spells
             {
                 case CastType.SelfLocation:
                 case CastType.TargetLocation:
-                    await Coroutine.Wait(3000, () => !Actionmanager.CanCastLocation(ID, target.Location));
+                    await Coroutine.Wait(3000, () => !ActionManager.CanCastLocation(ID, target.Location));
                     break;
                 default:
-                    await Coroutine.Wait(3000, () => !Actionmanager.CanCast(ID, target));
+                    await Coroutine.Wait(3000, () => !ActionManager.CanCast(ID, target));
                     break;
             }
 

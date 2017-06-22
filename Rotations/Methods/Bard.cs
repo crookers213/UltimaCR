@@ -110,7 +110,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Barrage()
         {
-            if (!Actionmanager.HasSpell(MySpells.EmpyrealArrow.Name) &&
+            if (!ActionManager.HasSpell(MySpells.EmpyrealArrow.Name) &&
                 DataManager.GetSpellData(97).Cooldown.TotalMilliseconds <= 1000)
             {
                 return await MySpells.Barrage.Cast();
@@ -290,11 +290,11 @@ namespace UltimaCR.Rotations
                 Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 4000) &&
                 DataManager.GetSpellData(97).Cooldown.TotalMilliseconds <= 700)
             {
-                if (Actionmanager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget))
+                if (ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget))
                 {
                     if (await MySpells.Barrage.Cast())
                     {
-                        await Coroutine.Wait(3000, () => Actionmanager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget));
+                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget));
                     }
                 }
                 return await MySpells.EmpyrealArrow.Cast();
