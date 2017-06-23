@@ -14,7 +14,25 @@ namespace UltimaCR.Spells.Main
         {
             get { return _pvp ?? (_pvp = new PVP.RedMageSpells.Pvp()); }
         }
-
+        
+        private Spell _riposte;
+        public Spell Riposte
+        {
+            get
+            {
+                return _riposte ??
+                       (_riposte =
+                           new Spell
+                           {
+                               Name = "Riposte",
+                               ID = 7504,
+                               Level = 1,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
+                           });
+            }
+        }
         private Spell _jolt;
         public Spell Jolt
         {
