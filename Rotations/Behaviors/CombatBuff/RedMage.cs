@@ -2,14 +2,14 @@
 
 namespace UltimaCR.Rotations
 {
-    public sealed partial class Samurai
+    public sealed partial class RedMage
     {
         public override async Task<bool> CombatBuff()
         {
             if (await Ultima.SummonChocobo()) return true;
-            if (await HissatsuKaiten()) return true;
-            if (await HissatsuShinten()) return true;
-            return await Ageha();
+            if (await Acceleration()) return true;
+            if (await Fleche()) return true;
+            return await Swiftcast();
         }
     }
 }

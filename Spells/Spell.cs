@@ -177,6 +177,12 @@ namespace UltimaCR.Spells
                             return false;
                         }
                         break;
+                    case ClassJobType.RedMage:
+                        if (EnemyCount < 3)
+                        {
+                            return false;
+                        }
+                        break;
                 }
             }
 
@@ -624,6 +630,12 @@ namespace UltimaCR.Spells
                     break;
                     case ClassJobType.Samurai:
                     if (DataManager.GetSpellData(8821).Cooldown.TotalMilliseconds <= 1000)
+                    {
+                        return false;
+                    }
+                    break;
+                    case ClassJobType.RedMage:
+                    if (DataManager.GetSpellData(7503).Cooldown.TotalMilliseconds <= 1000)
                     {
                         return false;
                     }

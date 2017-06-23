@@ -123,6 +123,24 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
+        private Spell _higanbana;
+        public Spell Higanbana
+        {
+            get
+            {
+                return _higanbana ??
+                       (_higanbana =
+                           new Spell
+                           {
+                               Name = "Higanbana",
+                               ID = 7489,
+                               Level = 30,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.DoT,
+                               CastType = CastType.Target
+                           });
+            }
+        }
         private Spell _midaresetsugekka;
         public Spell MidareSetsugekka
         {
@@ -138,6 +156,24 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.On,
                                SpellType = SpellType.Damage,
                                CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _hagakure;
+        public Spell Hagakure
+        {
+            get
+            {
+                return _hagakure ??
+                       (_hagakure =
+                           new Spell
+                           {
+                               Name = "Hagakure",
+                               ID = 7495,
+                               Level = 68,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Buff,
+                               CastType = CastType.Self
                            });
             }
         }
@@ -189,7 +225,7 @@ namespace UltimaCR.Spells.Main
                                Name = "Hissatsu: Kaiten",
                                ID = 7494,
                                Level = 52,
-                               GCDType = GCDType.Off,
+                               GCDType = GCDType.On,
                                SpellType = SpellType.Buff,
                                CastType = CastType.Self
                            });

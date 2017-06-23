@@ -194,6 +194,8 @@ namespace UltimaCR
                     return new Ninja();
                 case ClassJobType.Paladin:
                     return new Paladin();
+                case ClassJobType.RedMage:
+                    return new RedMage();
                 case ClassJobType.Samurai:
                     return new Samurai();
                 case ClassJobType.Scholar:
