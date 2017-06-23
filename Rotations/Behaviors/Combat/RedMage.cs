@@ -17,6 +17,7 @@ namespace UltimaCR.Rotations
             if (await Verfire()) return true;
             if (await Impact()) return true;
             if (await JoltII()) return true;
+            if (await Riposte()) return true;
             return await Jolt();
         }
 

@@ -15,6 +15,15 @@ namespace UltimaCR.Rotations
         }
 
         #region Job Spells
+        
+        private async Task<bool> Riposte()
+        {
+            if (Core.Player.ClassLevel < 2)
+            {
+                return await MySpells.Riposte.Cast();
+            }
+            return false;
+        }
 
         private async Task<bool> Jolt()
         {
