@@ -51,21 +51,21 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _divineseal;
-        public Spell DivineSeal
+        private Spell _cureiii;
+        public Spell CureIII
         {
             get
             {
-                return _divineseal ??
-                       (_divineseal =
+                return _cureiii ??
+                       (_cureiii =
                            new Spell
                            {
-                               Name = "Divine Seal",
-                               ID = 138,
+                               Name = "Cure III",
+                               ID = 131,
                                Level = 40,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Buff,
-                               CastType = CastType.Self
+                               SpellType = SpellType.Heal,
+                               CastType = CastType.Target
                            });
             }
         }
@@ -82,7 +82,7 @@ namespace UltimaCR.Spells.Main
                                ID = 139,
                                Level = 45,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Damage,
+                               SpellType = SpellType.AoE,
                                CastType = CastType.Self
                            });
             }
@@ -192,6 +192,78 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.On,
                                SpellType = SpellType.Heal,
                                CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _thinair;
+        public Spell ThinAir
+        {
+            get
+            {
+                return _thinair ??
+                       (_thinair =
+                           new Spell
+                           {
+                               Name = "Thin Air",
+                               ID = 7430,
+                               Level = 62,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Buff,
+                               CastType = CastType.Self
+                           });
+            }
+        }
+        private Spell _stoneiv;
+        public Spell StoneIV
+        {
+            get
+            {
+                return _stoneiv ??
+                       (_stoneiv =
+                           new Spell
+                           {
+                               Name = "Stone IV",
+                               ID = 7431,
+                               Level = 64,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _divinebenison;
+        public Spell DivineBenison
+        {
+            get
+            {
+                return _divinebenison ??
+                       (_divinebenison =
+                           new Spell
+                           {
+                               Name = "Divine Benison",
+                               ID = 7432,
+                               Level = 66,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Defensive,
+                               CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _plenaryindulgence;
+        public Spell PlenaryIndulgence
+        {
+            get
+            {
+                return _plenaryindulgence ??
+                       (_plenaryindulgence =
+                           new Spell
+                           {
+                               Name = "Plenary Indulgence",
+                               ID = 7433,
+                               Level = 70,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Heal,
+                               CastType = CastType.Self
                            });
             }
         }

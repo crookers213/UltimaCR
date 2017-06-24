@@ -646,34 +646,6 @@ namespace UltimaCR.Spells
             }
             #endregion
 
-            #region Cleric Stance Check
-
-            if (ActionManager.HasSpell(122))
-            {
-                switch (Core.Player.HasAura("Cleric Stance"))
-                {
-                    case true:
-                        if (SpellType == SpellType.Heal)
-                        {
-                            await Coroutine.Wait(1000, () => ActionManager.DoAction(122, Core.Player));
-                            Logging.Write(Colors.OrangeRed, @"[Ultima] Removing Cleric Stance");
-                            await Coroutine.Wait(3000, () => !Core.Player.HasAura(145));
-                        }
-                        break;
-                    case false:
-                        if (SpellType == SpellType.Damage ||
-                            SpellType == SpellType.DoT)
-                        {
-                            await Coroutine.Wait(1000, () => ActionManager.DoAction(122, Core.Player));
-                            Logging.Write(Colors.OrangeRed, @"[Ultima] Ability: Cleric Stance");
-                            await Coroutine.Wait(3000, () => Core.Player.HasAura(145));
-                        }
-                        break;
-                }
-            }
-
-            #endregion
-
             #region DoAction
             switch (CastType)
             {

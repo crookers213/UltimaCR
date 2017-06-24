@@ -6,7 +6,8 @@ namespace UltimaCR.Rotations
     {
         public override async Task<bool> PreCombatBuff()
         {
-            return await Ultima.SummonChocobo();
+            if (await Ultima.SummonChocobo()) return true;
+            return await Protect();
         }
     }
 }

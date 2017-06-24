@@ -69,42 +69,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _clericstance;
-        public Spell ClericStance
-        {
-            get
-            {
-                return _clericstance ??
-                       (_clericstance =
-                           new Spell
-                           {
-                               Name = "Cleric Stance",
-                               ID = 122,
-                               Level = 6,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Aura,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _protect;
-        public Spell Protect
-        {
-            get
-            {
-                return _protect ??
-                       (_protect =
-                           new Spell
-                           {
-                               Name = "Protect",
-                               ID = 123,
-                               Level = 8,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _medica;
         public Spell Medica
         {
@@ -159,24 +123,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _esuna;
-        public Spell Esuna
-        {
-            get
-            {
-                return _esuna ??
-                       (_esuna =
-                           new Spell
-                           {
-                               Name = "Esuna",
-                               ID = 126,
-                               Level = 18,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _stoneII;
         public Spell StoneII
         {
@@ -188,7 +134,7 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Stone II",
                                ID = 127,
-                               Level = 22,
+                               Level = 18,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Damage,
                                CastType = CastType.Target
@@ -231,60 +177,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _stoneskin;
-        public Spell Stoneskin
-        {
-            get
-            {
-                return _stoneskin ??
-                       (_stoneskin =
-                           new Spell
-                           {
-                               Name = "Stoneskin",
-                               ID = 129,
-                               Level = 34,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Target
-                           });
-            }
-        }
-        private Spell _shroudofsaints;
-        public Spell ShroudOfSaints
-        {
-            get
-            {
-                return _shroudofsaints ??
-                       (_shroudofsaints =
-                           new Spell
-                           {
-                               Name = "Shroud of Saints",
-                               ID = 130,
-                               Level = 38,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _cureIII;
-        public Spell CureIII
-        {
-            get
-            {
-                return _cureIII ??
-                       (_cureIII =
-                           new Spell
-                           {
-                               Name = "Cure III",
-                               ID = 131,
-                               Level = 42,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Heal,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _aeroII;
         public Spell AeroII
         {
@@ -317,24 +209,6 @@ namespace UltimaCR.Spells.Main
                                Level = 50,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Heal,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _stoneskinII;
-        public Spell StoneskinII
-        {
-            get
-            {
-                return _stoneskinII ??
-                       (_stoneskinII =
-                           new Spell
-                           {
-                               Name = "Stoneskin II",
-                               ID = 191,
-                               Level = 50,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
                                CastType = CastType.Self
                            });
             }

@@ -6,7 +6,6 @@ namespace UltimaCR.Rotations
     {
         public override async Task<bool> Combat()
         {
-            if (await FluidAura()) return true;
             if (await AeroII()) return true;
             if (await Aero()) return true;
             if (await StoneII()) return true;
