@@ -1,11 +1,13 @@
 ﻿using Buddy.Coroutines;
 using Clio.Utilities;
 using ff14bot;
+using ff14bot.Behavior;
 using ff14bot.Enums;
 using ff14bot.Helpers;
 using ff14bot.Managers;
 using ff14bot.Navigation;
 using ff14bot.Objects;
+using ff14bot.Pathing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -325,15 +327,15 @@ namespace UltimaCR.Spells
                     switch (ActionManager.InSpellInRangeLOS(2247, target))
                     {
                         case SpellRangeCheck.ErrorNotInLineOfSight:
-                            Navigator.MoveTo(target.Location);
+                            await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                             return false;
                         case SpellRangeCheck.ErrorNotInRange:
-                            Navigator.MoveTo(target.Location);
+                            await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                             return false;
                         case SpellRangeCheck.ErrorNotInFront:
                             if (!target.InLineOfSight())
                             {
-                                Navigator.MoveTo(target.Location);
+                                await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                                 return false;
                             }
                             target.Face();
@@ -379,7 +381,7 @@ namespace UltimaCR.Spells
 
                 #region Wait For Animation
 
-                if (Ultima.LastSpell.ID != null &&
+                if (Ultima.LastSpell.ID != 0 &&
                     Ultima.LastSpell.SpellType != SpellType.Ninjutsu &&
                     Ultima.LastSpell.SpellType != SpellType.Mudra)
                 {
@@ -439,15 +441,15 @@ namespace UltimaCR.Spells
                 switch (ActionManager.InSpellInRangeLOS(ID, target))
                 {
                     case SpellRangeCheck.ErrorNotInLineOfSight:
-                        Navigator.MoveTo(target.Location);
+                        await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                         return false;
                     case SpellRangeCheck.ErrorNotInRange:
-                        Navigator.MoveTo(target.Location);
+                        await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                         return false;
                     case SpellRangeCheck.ErrorNotInFront:
                         if (!target.InLineOfSight())
                         {
-                            Navigator.MoveTo(target.Location);
+                            await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                             return false;
                         }
                         target.Face();
@@ -456,7 +458,7 @@ namespace UltimaCR.Spells
                         if (CastType == CastType.TargetLocation &&
                             Core.Player.Distance2D(target) + Core.Player.CombatReach + target.CombatReach > 25)
                         {
-                            Navigator.MoveTo(target.Location);
+                            await CommonTasks.MoveAndStop(new MoveToParameters(target.Location), 0f);
                             await Coroutine.Wait(1000, () => Core.Player.Distance2D(target) + Core.Player.CombatReach + target.CombatReach <= 25);
                             return false;
                         }

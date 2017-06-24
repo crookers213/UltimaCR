@@ -4,13 +4,13 @@ namespace UltimaCR.Spells.Main
     public class RedMageSpells
     {
         private CrossClass.RedMageSpells.Crossclass _crossClass;
-        public new CrossClass.RedMageSpells.Crossclass CrossClass
+        public CrossClass.RedMageSpells.Crossclass CrossClass
         {
             get { return _crossClass ?? (_crossClass = new CrossClass.RedMageSpells.Crossclass()); }
         }
 
         private PVP.RedMageSpells.Pvp _pvp;
-        public new PVP.RedMageSpells.Pvp PvP
+        public PVP.RedMageSpells.Pvp PvP
         {
             get { return _pvp ?? (_pvp = new PVP.RedMageSpells.Pvp()); }
         }

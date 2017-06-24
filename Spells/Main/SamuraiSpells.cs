@@ -4,13 +4,13 @@ namespace UltimaCR.Spells.Main
     public class SamuraiSpells
     {
         private CrossClass.SamuraiSpells.Crossclass _crossClass;
-        public new CrossClass.SamuraiSpells.Crossclass CrossClass
+        public CrossClass.SamuraiSpells.Crossclass CrossClass
         {
             get { return _crossClass ?? (_crossClass = new CrossClass.SamuraiSpells.Crossclass()); }
         }
 
         private PVP.SamuraiSpells.Pvp _pvp;
-        public new PVP.SamuraiSpells.Pvp PvP
+        public PVP.SamuraiSpells.Pvp PvP
         {
             get { return _pvp ?? (_pvp = new PVP.SamuraiSpells.Pvp()); }
         }
