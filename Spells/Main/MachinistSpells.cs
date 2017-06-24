@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class MachinistSpells
     {
-        private CrossClass.MachinistSpells.Crossclass _crossClass;
-        public CrossClass.MachinistSpells.Crossclass CrossClass
+        private Role.RangedSpells.Role _role;
+        public Role.RangedSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.MachinistSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.RangedSpells.Role()); }
         }
 
         private PVP.MachinistSpells.Pvp _pvp;

@@ -201,7 +201,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> ShadowFlare()
         {
-            if (ActionManager.HasSpell(MySpells.ShadowFlare.Name) &&
+            /*if (ActionManager.HasSpell(MySpells.ShadowFlare.Name) &&
                 !Core.Player.HasAura(MySpells.ShadowFlare.Name, true, 4000))
             {
                 if (ActionManager.CanCast(MySpells.RuinII.Name, Core.Player.CurrentTarget) &&
@@ -225,105 +225,13 @@ namespace UltimaCR.Rotations
                     await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ShadowFlare.Name));
                 }
                 return true;
-            }
+            }*/
             return false;
         }
 
         #endregion
 
-        #region Cross Class Spells
-
-        #region Conjurer
-
-        private async Task<bool> Cure()
-        {
-            if (Ultima.UltSettings.ScholarCure)
-            {
-                return await MySpells.CrossClass.Cure.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Aero()
-        {
-            if (Ultima.UltSettings.ScholarAero &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.CrossClass.Aero.Name, true, 4000))
-            {
-                return await MySpells.CrossClass.Aero.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> ClericStance()
-        {
-            if (Ultima.UltSettings.ScholarClericStance)
-            {
-                return await MySpells.CrossClass.ClericStance.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Protect()
-        {
-            if (Ultima.UltSettings.ScholarProtect &&
-                !Core.Player.HasAura(MySpells.CrossClass.Protect.Name))
-            {
-                return await MySpells.CrossClass.Protect.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Raise()
-        {
-            if (Ultima.UltSettings.ScholarRaise)
-            {
-                return await MySpells.CrossClass.Raise.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Stoneskin()
-        {
-            if (Ultima.UltSettings.ScholarStoneskin &&
-                !Core.Player.HasAura(MySpells.CrossClass.Stoneskin.Name))
-            {
-                return await MySpells.CrossClass.Stoneskin.Cast();
-            }
-            return false;
-        }
-
-        #endregion
-
-        #region Thaumaturge
-
-        private async Task<bool> Surecast()
-        {
-            if (Ultima.UltSettings.ScholarSurecast)
-            {
-                return await MySpells.CrossClass.Surecast.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BlizzardII()
-        {
-            if (Ultima.UltSettings.ScholarBlizzardII)
-            {
-                return await MySpells.CrossClass.BlizzardII.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Swiftcast()
-        {
-            if (Ultima.UltSettings.ScholarSwiftcast)
-            {
-                return await MySpells.CrossClass.Swiftcast.Cast();
-            }
-            return false;
-        }
-
-        #endregion
+        #region Role Spells
 
         #endregion
 

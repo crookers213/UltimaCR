@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class SummonerSpells : ArcanistSpells
     {
-        private CrossClass.SummonerSpells.Crossclass _crossClass;
-        public new CrossClass.SummonerSpells.Crossclass CrossClass
+        private Role.CasterSpells.Role _role;
+        public new Role.CasterSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.SummonerSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.CasterSpells.Role()); }
         }
 
         private PVP.SummonerSpells.Pvp _pvp;

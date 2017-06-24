@@ -8,9 +8,6 @@ namespace UltimaCR.Rotations
         {
             if (Ultima.UltSettings.SmartTarget)
             {
-                if (await Invigorate()) return true;
-                if (await InternalRelease()) return true;
-                if (await BloodForBlood()) return true;
                 if (await DancingEdge()) return true;
                 if (await AeolianEdge()) return true;
                 if (await ShadowFang()) return true;
@@ -25,9 +22,6 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.SingleTarget)
             {
-                if (await Invigorate()) return true;
-                if (await InternalRelease()) return true;
-                if (await BloodForBlood()) return true;
                 if (await DancingEdge()) return true;
                 if (await AeolianEdge()) return true;
                 if (await ShadowFang()) return true;
@@ -41,9 +35,6 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.MultiTarget)
             {
-                if (await Invigorate()) return true;
-                if (await InternalRelease()) return true;
-                if (await BloodForBlood()) return true;
                 if (await Mug()) return true;
                 if (await Jugulate()) return true;
                 if (await Assassinate()) return true;

@@ -201,7 +201,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> ShadowFlare()
         {
-            if (ActionManager.HasSpell(MySpells.ShadowFlare.Name) &&
+            /*if (ActionManager.HasSpell(MySpells.ShadowFlare.Name) &&
                 !Core.Player.HasAura(MySpells.ShadowFlare.Name, true, 4000))
             {
                 if (ActionManager.CanCast(MySpells.RuinII.Name, Core.Player.CurrentTarget) &&
@@ -225,81 +225,13 @@ namespace UltimaCR.Rotations
                     await Coroutine.Wait(3000, () => Core.Player.HasAura(MySpells.ShadowFlare.Name));
                 }
                 return true;
-            }
+            }*/
             return false;
         }
 
         #endregion
 
-        #region Cross Class Spells
-
-        #region Archer
-
-        private async Task<bool> RagingStrikes()
-        {
-            if (Ultima.UltSettings.SummonerRagingStrikes)
-            {
-                if (!Core.Player.CurrentTarget.HasAura(MySpells.BioII.Name, true, 6000) ||
-                    !Core.Player.CurrentTarget.HasAura(MySpells.Miasma.Name, true, 6000) ||
-                    !Core.Player.CurrentTarget.HasAura(MySpells.Bio.Name, true, 5000))
-                {
-                    return await MySpells.CrossClass.RagingStrikes.Cast();
-                }
-                return false;
-            }
-            return false;
-        }
-
-        private async Task<bool> HawksEye()
-        {
-            if (Ultima.UltSettings.SummonerHawksEye)
-            {
-                return await MySpells.CrossClass.HawksEye.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> QuellingStrikes()
-        {
-            if (Ultima.UltSettings.SummonerQuellingStrikes)
-            {
-                return await MySpells.CrossClass.QuellingStrikes.Cast();
-            }
-            return false;
-        }
-
-        #endregion
-
-        #region Thaumaturge
-
-        private async Task<bool> Surecast()
-        {
-            if (Ultima.UltSettings.SummonerSurecast)
-            {
-                return await MySpells.CrossClass.Surecast.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BlizzardII()
-        {
-            if (Ultima.UltSettings.SummonerBlizzardII)
-            {
-                return await MySpells.CrossClass.BlizzardII.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Swiftcast()
-        {
-            if (Ultima.UltSettings.SummonerSwiftcast)
-            {
-                return await MySpells.CrossClass.Swiftcast.Cast();
-            }
-            return false;
-        }
-
-        #endregion
+        #region Role Spells
 
         #endregion
 

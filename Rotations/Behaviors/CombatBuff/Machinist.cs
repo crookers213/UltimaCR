@@ -12,12 +12,8 @@ namespace UltimaCR.Rotations
             if (await BishopAutoturret()) return true;
             if (await Reload()) return true;
             if (await QuickReload()) return true;
-            if (await Invigorate()) return true;
             if (await Hypercharge()) return true;
-            if (await HawksEye()) return true;
             if (await GaussRound()) return true;
-            if (await RagingStrikes()) return true;
-            if (await BloodForBlood()) return true;
             if (await RapidFire()) return true;
             if (await Wildfire()) return true;
             if (await Ricochet()) return true;

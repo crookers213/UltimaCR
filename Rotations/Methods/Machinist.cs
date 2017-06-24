@@ -112,10 +112,10 @@ namespace UltimaCR.Rotations
         }
         private async Task<bool> RapidFire()
         {
-            if (Core.Player.HasAura(MySpells.CrossClass.HawksEye.Name))
+            /*if (Core.Player.HasAura(MySpells.CrossClass.HawksEye.Name))
             {
                 return await MySpells.RapidFire.Cast();
-            }
+            }*/
             return false;
         }
         private async Task<bool> HeadGraze()
@@ -143,10 +143,10 @@ namespace UltimaCR.Rotations
         }
         private async Task<bool> Wildfire()
         {
-            if (Core.Player.HasAura(MySpells.CrossClass.HawksEye.Name))
+            /*if (Core.Player.HasAura(MySpells.CrossClass.HawksEye.Name))
             {
                 return await MySpells.Wildfire.Cast();
-            }
+            }*/
             return false;
         }
         private async Task<bool> RookAutoturret()
@@ -237,88 +237,11 @@ namespace UltimaCR.Rotations
 
         #endregion
 
-        #region Cross Class Spells
-
-        #region Archer
-
-        private async Task<bool> RagingStrikes()
-        {
-            if (Ultima.UltSettings.MachinistRagingStrikes &&
-                Core.Player.HasAura(MySpells.CrossClass.HawksEye.Name))
-            {
-                return await MySpells.CrossClass.RagingStrikes.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> HawksEye()
-        {
-            if (Ultima.UltSettings.MachinistHawksEye)
-            {
-                return await MySpells.CrossClass.HawksEye.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> QuellingStrikes()
-        {
-            if (Ultima.UltSettings.MachinistQuellingStrikes)
-            {
-                return await MySpells.CrossClass.QuellingStrikes.Cast();
-            }
-            return false;
-        }
-
-        #endregion
-
-        #region Lancer
-
-        private async Task<bool> Feint()
-        {
-            if (Ultima.UltSettings.MachinistFeint &&
-                MovementManager.IsMoving)
-            {
-                return await MySpells.CrossClass.Feint.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> KeenFlurry()
-        {
-            if (Ultima.UltSettings.MachinistKeenFlurry)
-            {
-                return await MySpells.CrossClass.KeenFlurry.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Invigorate()
-        {
-            if (Ultima.UltSettings.MachinistInvigorate &&
-                Core.Player.CurrentTP <= 540)
-            {
-                return await MySpells.CrossClass.Invigorate.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BloodForBlood()
-        {
-            if (Ultima.UltSettings.MachinistBloodForBlood &&
-                Core.Player.HasAura(MySpells.CrossClass.HawksEye.Name))
-            {
-                return await MySpells.CrossClass.BloodForBlood.Cast();
-            }
-            return false;
-        }
-
-        #endregion
+        #region Role Spells
 
         #endregion
 
         #region PvP Spells
-
-
 
         #endregion
     }

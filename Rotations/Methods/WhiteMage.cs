@@ -85,7 +85,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Raise()
         {
-            if (Ultima.UltSettings.WhiteMageRaise &&
+            /*if (Ultima.UltSettings.WhiteMageRaise &&
                 !Helpers.HealManager.Any(hm => hm.CurrentHealthPercent <= 70))
             {
                 var target = Helpers.PartyMembers.FirstOrDefault(pm =>
@@ -106,7 +106,7 @@ namespace UltimaCR.Rotations
                     }
                     return await MySpells.Raise.Cast(target);
                 }
-            }
+            }*/
             return false;
         }
 
@@ -224,78 +224,7 @@ namespace UltimaCR.Rotations
 
         #endregion
 
-        #region Cross Class Spells
-
-        #region Arcanist
-
-        private async Task<bool> Ruin()
-        {
-            if (Ultima.UltSettings.WhiteMageRuin)
-            {
-                return await MySpells.CrossClass.Ruin.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Physick()
-        {
-            if (Ultima.UltSettings.WhiteMagePhysick)
-            {
-                return await MySpells.CrossClass.Physick.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Virus()
-        {
-            if (Ultima.UltSettings.WhiteMageVirus)
-            {
-                return await MySpells.CrossClass.Virus.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> EyeForAnEye()
-        {
-            if (Ultima.UltSettings.WhiteMageEyeForAnEye)
-            {
-                return await MySpells.CrossClass.EyeForAnEye.Cast();
-            }
-            return false;
-        }
-
-        #endregion
-
-        #region Thaumaturge
-
-        private async Task<bool> BlizzardII()
-        {
-            if (Ultima.UltSettings.WhiteMageBlizzardII)
-            {
-                return await MySpells.CrossClass.BlizzardII.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Surecast()
-        {
-            if (Ultima.UltSettings.WhiteMageSurecast)
-            {
-                return await MySpells.CrossClass.Surecast.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Swiftcast()
-        {
-            if (Ultima.UltSettings.WhiteMageSwiftcast)
-            {
-                return await MySpells.CrossClass.Swiftcast.Cast();
-            }
-            return false;
-        }
-
-        #endregion
+        #region Role Spells
 
         #endregion
 

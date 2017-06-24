@@ -8,7 +8,6 @@ namespace UltimaCR.Rotations
         {
             if (await RageOfHalone()) return true;
             if (await SavageBlade()) return true;
-            if (await Fracture()) return true;
             return await FastBlade();
         }
 

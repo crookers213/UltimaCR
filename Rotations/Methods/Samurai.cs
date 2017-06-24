@@ -208,6 +208,37 @@ namespace UltimaCR.Rotations
 
         #endregion
         
+        #region Role Spells
+        
+        private async Task<bool> SecondWind()
+        {
+            if (Core.Player.CurrentHealthPercent < 50)
+            {
+                return await MySpells.Role.SecondWind.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Invigorate()
+        {
+            if (Core.Player.CurrentTP <= 400)
+            {
+                return await MySpells.Role.Invigorate.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Bloodbath()
+        {
+            if (Core.Player.CurrentHealthPercent < 70)
+            {
+                return await MySpells.Role.Bloodbath.Cast();
+            }
+            return false;
+        }
+        
+        #endregion
+        
         #region Custom Spells
         
         private static int Kenki

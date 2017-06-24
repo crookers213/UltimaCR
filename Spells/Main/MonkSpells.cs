@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class MonkSpells : PugilistSpells
     {
-        private CrossClass.MonkSpells.Crossclass _crossClass;
-        public new CrossClass.MonkSpells.Crossclass CrossClass
+        private Role.MeleeSpells.Role _role;
+        public new Role.MeleeSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.MonkSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.MeleeSpells.Role()); }
         }
 
         private PVP.MonkSpells.Pvp _pvp;

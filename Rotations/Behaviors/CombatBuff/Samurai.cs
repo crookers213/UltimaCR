@@ -7,6 +7,7 @@ namespace UltimaCR.Rotations
         public override async Task<bool> CombatBuff()
         {
             if (await Ultima.SummonChocobo()) return true;
+            if (await Invigorate()) return true;
             if (await HissatsuKyuten()) return true;
             if (await HissatsuShinten()) return true;
             return await Ageha();

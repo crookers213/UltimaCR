@@ -7,8 +7,7 @@ namespace UltimaCR.Rotations
         public override async Task<bool> CombatBuff()
         {
             if (await Ultima.SummonChocobo()) return true;
-            if (await Transpose()) return true;
-            return await RagingStrikes();
+            return await Transpose();
         }
     }
 }

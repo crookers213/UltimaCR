@@ -167,105 +167,11 @@ namespace UltimaCR.Rotations
 
         #endregion
 
-        #region Cross Class Spells
-
-        #region Conjurer
-
-        private async Task<bool> Cure()
-        {
-            if (Ultima.UltSettings.AstrologianCure)
-            {
-                return await MySpells.CrossClass.Cure.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Aero()
-        {
-            if (Ultima.UltSettings.AstrologianAero &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.CrossClass.Aero.Name, true, 4000))
-            {
-                return await MySpells.CrossClass.Aero.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> ClericStance()
-        {
-            if (Ultima.UltSettings.AstrologianClericStance)
-            {
-                return await MySpells.CrossClass.ClericStance.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Protect()
-        {
-            if (Ultima.UltSettings.AstrologianProtect &&
-                !Core.Player.HasAura(MySpells.CrossClass.Protect.Name))
-            {
-                return await MySpells.CrossClass.Protect.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Raise()
-        {
-            if (Ultima.UltSettings.AstrologianRaise)
-            {
-                return await MySpells.CrossClass.Raise.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Stoneskin()
-        {
-            if (Ultima.UltSettings.AstrologianStoneskin &&
-                !Core.Player.HasAura(MySpells.CrossClass.Stoneskin.Name))
-            {
-                return await MySpells.CrossClass.Stoneskin.Cast();
-            }
-            return false;
-        }
-
-        #endregion
-
-        #region Thaumaturge
-
-        private async Task<bool> Surecast()
-        {
-            if (Ultima.UltSettings.AstrologianSurecast)
-            {
-                return await MySpells.CrossClass.Surecast.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BlizzardII()
-        {
-            if (Ultima.UltSettings.AstrologianBlizzardII)
-            {
-                return await MySpells.CrossClass.BlizzardII.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Swiftcast()
-        {
-            if (Ultima.UltSettings.AstrologianSwiftcast)
-            {
-                return await MySpells.CrossClass.Swiftcast.Cast();
-            }
-            return false;
-        }
-
-        #endregion
+        #region Role Spells
 
         #endregion
 
         #region PvP Spells
-
-
 
         #endregion
 

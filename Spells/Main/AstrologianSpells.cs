@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class AstrologianSpells
     {
-        private CrossClass.AstrologianSpells.Crossclass _crossClass;
-        public CrossClass.AstrologianSpells.Crossclass CrossClass
+        private Role.HealerSpells.Role _role;
+        public Role.HealerSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.AstrologianSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.HealerSpells.Role()); }
         }
 
         private PVP.AstrologianSpells.Pvp _pvp;

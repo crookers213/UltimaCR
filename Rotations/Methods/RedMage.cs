@@ -177,10 +177,10 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Swiftcast()
         {
-            if (UseOffGCD)
+            /*if (UseOffGCD)
             {
-                return await MySpells.CrossClass.Swiftcast.Cast();
-            }
+                return await MySpells.Role.Swiftcast.Cast();
+            }*/
             return false;
         }
         

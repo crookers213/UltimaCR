@@ -3,16 +3,16 @@ namespace UltimaCR.Spells.Main
 {
     public class SamuraiSpells
     {
-        private CrossClass.SamuraiSpells.Crossclass _crossClass;
-        public CrossClass.SamuraiSpells.Crossclass CrossClass
+        private Role.MeleeSpells.Role _role;
+        public Role.MeleeSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.SamuraiSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.MeleeSpells.Role()); }
         }
 
-        private PVP.SamuraiSpells.Pvp _pvp;
-        public PVP.SamuraiSpells.Pvp PvP
+        private PVP.SamuraiSpells.PVP _pvp;
+        public PVP.SamuraiSpells.PVP PVP
         {
-            get { return _pvp ?? (_pvp = new PVP.SamuraiSpells.Pvp()); }
+            get { return _pvp ?? (_pvp = new PVP.SamuraiSpells.PVP()); }
         }
 
         private Spell _hakaze;

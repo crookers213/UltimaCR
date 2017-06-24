@@ -9,8 +9,7 @@ namespace UltimaCR.Rotations
             if (await Ultima.SummonChocobo()) return true;
             if (await FightOrFlight()) return true;
             if (await ShieldSwipe()) return true;
-            if (await CircleOfScorn()) return true;
-            return await MercyStroke();
+            return await CircleOfScorn();
         }
     }
 }

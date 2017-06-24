@@ -8,7 +8,6 @@ namespace UltimaCR.Rotations
         {
             if (Ultima.UltSettings.SmartTarget)
             {
-                if (await RagingStrikes()) return true;
                 if (await BioII()) return true;
                 if (await Miasma()) return true;
                 if (await Bio()) return true;
@@ -28,7 +27,6 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.SingleTarget)
             {
-                if (await RagingStrikes()) return true;
                 if (await BioII()) return true;
                 if (await Miasma()) return true;
                 if (await Bio()) return true;
@@ -46,7 +44,6 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.MultiTarget)
             {
-                if (await RagingStrikes()) return true;
                 if (await BioII()) return true;
                 if (await Miasma()) return true;
                 if (await Bio()) return true;

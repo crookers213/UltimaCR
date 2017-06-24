@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class DragoonSpells : LancerSpells
     {
-        private CrossClass.DragoonSpells.Crossclass _crossClass;
-        public new CrossClass.DragoonSpells.Crossclass CrossClass
+        private Role.MeleeSpells.Role _role;
+        public new Role.MeleeSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.DragoonSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.MeleeSpells.Role()); }
         }
 
         private PVP.DragoonSpells.Pvp _pvp;

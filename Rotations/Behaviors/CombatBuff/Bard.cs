@@ -8,11 +8,6 @@ namespace UltimaCR.Rotations
         {
             if (await Ultima.SummonChocobo()) return true;
             if (await WanderersMinuet()) return true;
-            if (await Invigorate()) return true;
-            if (await RagingStrikes()) return true;
-            if (await HawksEye()) return true;
-            if (await BloodForBlood()) return true;
-            if (await InternalRelease()) return true;
             if (await Barrage()) return true;
             if (await FlamingArrow()) return true;
             if (await Sidewinder()) return true;

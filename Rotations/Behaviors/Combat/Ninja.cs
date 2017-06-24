@@ -17,9 +17,6 @@ namespace UltimaCR.Rotations
                 if (await Katon()) return true;
                 if (await Raiton()) return true;
                 if (await FumaShuriken()) return true;
-                if (await Invigorate()) return true;
-                if (await InternalRelease()) return true;
-                if (await BloodForBlood()) return true;
                 if (await Shukuchi()) return true;
                 if (await ArmorCrush()) return true;
                 if (await DancingEdge()) return true;
@@ -44,9 +41,6 @@ namespace UltimaCR.Rotations
                 if (await Kassatsu()) return true;
                 if (await Raiton()) return true;
                 if (await FumaShuriken()) return true;
-                if (await Invigorate()) return true;
-                if (await InternalRelease()) return true;
-                if (await BloodForBlood()) return true;
                 if (await Shukuchi()) return true;
                 if (await ArmorCrush()) return true;
                 if (await DancingEdge()) return true;
@@ -67,9 +61,6 @@ namespace UltimaCR.Rotations
                 if (await Doton()) return true;
                 if (await Kassatsu()) return true;
                 if (await Katon()) return true;
-                if (await Invigorate()) return true;
-                if (await InternalRelease()) return true;
-                if (await BloodForBlood()) return true;
                 if (await Shukuchi()) return true;
                 if (await Duality()) return true;
                 if (await DreamWithinADream()) return true;

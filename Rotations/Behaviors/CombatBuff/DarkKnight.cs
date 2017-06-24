@@ -12,8 +12,7 @@ namespace UltimaCR.Rotations
             if (await Plunge()) return true;
             if (await Reprisal()) return true;
             if (await LowBlow()) return true;
-            if (await SaltedEarth()) return true;
-            return await MercyStroke();
+            return await SaltedEarth();
         }
     }
 }

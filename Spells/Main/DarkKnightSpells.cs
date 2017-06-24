@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class DarkKnightSpells
     {
-        private CrossClass.DarkKnightSpells.Crossclass _crossClass;
-        public CrossClass.DarkKnightSpells.Crossclass CrossClass
+        private Role.TankSpells.Role _role;
+        public Role.TankSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.DarkKnightSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.TankSpells.Role()); }
         }
 
         private PVP.DarkKnightSpells.Pvp _pvp;

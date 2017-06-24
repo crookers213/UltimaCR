@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class PaladinSpells : GladiatorSpells
     {
-        private CrossClass.PaladinSpells.Crossclass _crossClass;
-        public new CrossClass.PaladinSpells.Crossclass CrossClass
+        private Role.TankSpells.Role _role;
+        public new Role.TankSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.PaladinSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.TankSpells.Role()); }
         }
 
         private PVP.PaladinSpells.Pvp _pvp;

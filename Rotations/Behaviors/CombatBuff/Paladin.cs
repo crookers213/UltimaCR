@@ -10,8 +10,7 @@ namespace UltimaCR.Rotations
             if (await FightOrFlight()) return true;
             if (await ShieldSwipe()) return true;
             if (await CircleOfScorn()) return true;
-            if (await SpiritsWithin()) return true;
-            return await MercyStroke();
+            return await SpiritsWithin();
         }
     }
 }

@@ -11,7 +11,6 @@ namespace UltimaCR.Rotations
                 if (await BioII()) return true;
                 if (await Miasma()) return true;
                 if (await Bio()) return true;
-                if (await Aero()) return true;
                 if (await MiasmaII()) return true;
                 if (await Aetherflow()) return true;
                 if (await Bane()) return true;
@@ -26,7 +25,6 @@ namespace UltimaCR.Rotations
                 if (await BioII()) return true;
                 if (await Miasma()) return true;
                 if (await Bio()) return true;
-                if (await Aero()) return true;
                 if (await Aetherflow()) return true;
                 if (await EnergyDrain()) return true;
                 if (await ShadowFlare()) return true;
@@ -39,7 +37,6 @@ namespace UltimaCR.Rotations
                 if (await BioII()) return true;
                 if (await Miasma()) return true;
                 if (await Bio()) return true;
-                if (await Aero()) return true;
                 if (await MiasmaII()) return true;
                 if (await Aetherflow()) return true;
                 if (await Bane()) return true;

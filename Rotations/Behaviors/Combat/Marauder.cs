@@ -11,7 +11,6 @@ namespace UltimaCR.Rotations
             if (await Maim()) return true;
             if (await ButchersBlock()) return true;
             if (await SkullSunder()) return true;
-            if (await Fracture()) return true;
             return await HeavySwing();
         }
 

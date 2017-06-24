@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class RedMageSpells
     {
-        private CrossClass.RedMageSpells.Crossclass _crossClass;
-        public CrossClass.RedMageSpells.Crossclass CrossClass
+        private Role.CasterSpells.Role _role;
+        public Role.CasterSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.RedMageSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.CasterSpells.Role()); }
         }
 
         private PVP.RedMageSpells.Pvp _pvp;

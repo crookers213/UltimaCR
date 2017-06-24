@@ -15,8 +15,7 @@ namespace UltimaCR.Rotations
                 if (await EmpyrealArrow()) return true;
                 if (await QuickNock()) return true;
                 if (await WideVolley()) return true;
-                if (await HeavyShot()) return true;
-                return await Feint();
+                return await HeavyShot();
             }
             if (Ultima.UltSettings.SingleTarget)
             {
@@ -25,15 +24,13 @@ namespace UltimaCR.Rotations
                 if (await Windbite()) return true;
                 if (await VenomousBite()) return true;
                 if (await EmpyrealArrow()) return true;
-                if (await HeavyShot()) return true;
-                return await Feint();
+                return await HeavyShot();
             }
             if (Ultima.UltSettings.MultiTarget)
             {
                 if (await StraightShot()) return true;
                 if (await QuickNock()) return true;
-                if (await WideVolley()) return true;
-                return await Feint();
+                return await WideVolley();
             }
             return false;
         }

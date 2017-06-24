@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class MarauderSpells
     {
-        private CrossClass.MarauderSpells.Crossclass _crossClass;
-        public CrossClass.MarauderSpells.Crossclass CrossClass
+        private Role.TankSpells.Role _role;
+        public Role.TankSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.MarauderSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.TankSpells.Role()); }
         }
 
         private PVP.MarauderSpells.Pvp _pvp;

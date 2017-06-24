@@ -233,111 +233,11 @@ namespace UltimaCR.Rotations
 
         #endregion
 
-        #region Cross Class Spells
-
-        #region Gladiator
-
-        private async Task<bool> SavageBlade()
-        {
-            if (Ultima.UltSettings.DarkKnightSavageBlade)
-            {
-                return await MySpells.CrossClass.SavageBlade.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Flash()
-        {
-            if (Ultima.UltSettings.DarkKnightFlash)
-            {
-                return await MySpells.CrossClass.Flash.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Convalescence()
-        {
-            if (Ultima.UltSettings.DarkKnightConvalescence)
-            {
-                return await MySpells.CrossClass.Convalescence.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Provoke()
-        {
-            if (Ultima.UltSettings.DarkKnightProvoke)
-            {
-                return await MySpells.CrossClass.Provoke.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Awareness()
-        {
-            if (Ultima.UltSettings.DarkKnightAwareness)
-            {
-                return await MySpells.CrossClass.Awareness.Cast();
-            }
-            return false;
-        }
-
-        #endregion
-
-        #region Marauder
-
-        private async Task<bool> Foresight()
-        {
-            if (Ultima.UltSettings.DarkKnightForesight)
-            {
-                return await MySpells.CrossClass.Foresight.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> SkullSunder()
-        {
-            if (Ultima.UltSettings.DarkKnightSkullSunder)
-            {
-                return await MySpells.CrossClass.SkullSunder.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Fracture()
-        {
-            if (Ultima.UltSettings.DarkKnightFracture)
-            {
-                return await MySpells.CrossClass.Fracture.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Bloodbath()
-        {
-            if (Ultima.UltSettings.DarkKnightBloodbath)
-            {
-                return await MySpells.CrossClass.Bloodbath.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> MercyStroke()
-        {
-            if (Ultima.UltSettings.DarkKnightMercyStroke)
-            {
-                return await MySpells.CrossClass.MercyStroke.Cast();
-            }
-            return false;
-        }
-
-        #endregion
+        #region Role Spells
 
         #endregion
 
         #region PvP Spells
-
-
 
         #endregion
     }

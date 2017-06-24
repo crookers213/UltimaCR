@@ -8,9 +8,7 @@ namespace UltimaCR.Rotations
         {
             if (await Ultima.SummonChocobo()) return true;
             if (await SummonII()) return true;
-            if (await Summon()) return true;
-            if (await Protect()) return true;
-            return await Stoneskin();
+            return await Summon();
         }
     }
 }

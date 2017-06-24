@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class ConjurerSpells
     {
-        private CrossClass.ConjurerSpells.Crossclass _crossClass;
-        public CrossClass.ConjurerSpells.Crossclass CrossClass
+        private Role.HealerSpells.Role _role;
+        public Role.HealerSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.ConjurerSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.HealerSpells.Role()); }
         }
 
         private PVP.ConjurerSpells.Pvp _pvp;

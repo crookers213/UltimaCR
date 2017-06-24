@@ -3,10 +3,10 @@ namespace UltimaCR.Spells.Main
 {
     public class BlackMageSpells : ThaumaturgeSpells
     {
-        private CrossClass.BlackMageSpells.Crossclass _crossClass;
-        public new CrossClass.BlackMageSpells.Crossclass CrossClass
+        private Role.CasterSpells.Role _role;
+        public new Role.CasterSpells.Role Role
         {
-            get { return _crossClass ?? (_crossClass = new CrossClass.BlackMageSpells.Crossclass()); }
+            get { return _role ?? (_role = new Role.CasterSpells.Role()); }
         }
 
         private PVP.BlackMageSpells.Pvp _pvp;
