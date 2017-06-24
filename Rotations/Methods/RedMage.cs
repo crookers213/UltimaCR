@@ -46,8 +46,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Veraero()
         {
-            if ((Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast")) && 
-        ActionResourceManager.RedMage.BlackMana > ActionResourceManager.RedMage.WhiteMana)
+            if ((Core.Player.HasAura("Dualcast") || Core.Player.HasAura("Swiftcast")) && BlackMana > WhiteMana)
             {
                 return await MySpells.Veraero.Cast();
             }
@@ -75,8 +74,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> EnchantedRiposte()
         {
-            if (ActionResourceManager.RedMage.WhiteMana >= 80 && ActionResourceManager.RedMage.BlackMana >= 80 && 
-        Core.Target.Distance2D() <= 2.9f)
+            if (WhiteMana >= 80 && BlackMana >= 80 && Core.Player.TargetDistance(5, false))
             {
                 return await MySpells.EnchantedRiposte.Cast();
             }
@@ -85,7 +83,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> EnchantedZwerchhau()
         {
-            if (ActionManager.LastSpell.Name == "Riposte" && Core.Target.Distance2D() <= 2.9f)
+            if (ActionManager.LastSpell.Name == "Riposte" && Core.Player.TargetDistance(5, false))
             {
                 return await MySpells.EnchantedZwerchhau.Cast();
             }
@@ -94,7 +92,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> EnchantedRedoublement()
         {
-            if (ActionManager.LastSpell.Name == "Zwerchhau" && Core.Target.Distance2D() <= 2.9f)
+            if (ActionManager.LastSpell.Name == "Zwerchhau" && Core.Player.TargetDistance(5, false))
             {
                 return await MySpells.EnchantedRedoublement.Cast();
             }
@@ -103,7 +101,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Verflare()
         {
-            if (ActionResourceManager.RedMage.WhiteMana >= ActionResourceManager.RedMage.BlackMana)
+            if (WhiteMana >= BlackMana)
             {
                 return await MySpells.Verflare.Cast();
             }
@@ -112,7 +110,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Verholy()
         {
-            if (ActionResourceManager.RedMage.BlackMana >= ActionResourceManager.RedMage.WhiteMana)
+            if (BlackMana >= WhiteMana)
             {
                 return await MySpells.Verholy.Cast();
             }
@@ -121,17 +119,29 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Fleche()
         {
-            return await MySpells.Fleche.Cast();
+            if (UseOffGCD)
+            {
+                return await MySpells.Fleche.Cast();
+            }
+            return false;
         }
         
-        private async Task<bool> Zwerchhau()
+        private async Task<bool> ContreSixte()
         {
-            return await MySpells.Zwerchhau.Cast();
+            if (UseOffGCD)
+            {
+                return await MySpells.ContreSixte.Cast();
+            }
+            return false;
         }
         
         private async Task<bool> Acceleration()
         {
-            return await MySpells.Acceleration.Cast();
+            if (UseOffGCD)
+            {
+                return await MySpells.Acceleration.Cast();
+            }
+            return false;
         }
         
         private async Task<bool> Vercure()
@@ -142,6 +152,24 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
+        
+        private async Task<bool> Scatter()
+        {
+            if (Core.Player.ClassLevel >= 52 || Ultima.UltSettings.MultiTarget)
+            {
+                return await MySpells.Scatter.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> EnchantedMoulinet()
+        {
+            if (WhiteMana >= 30 && BlackMana >= 30)
+            {
+                return await MySpells.EnchantedMoulinet.Cast();
+            }
+            return false;
+        }
 
         #endregion
         
@@ -149,7 +177,40 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Swiftcast()
         {
-            return await MySpells.CrossClass.Swiftcast.Cast();
+            if (UseOffGCD)
+            {
+                return await MySpells.CrossClass.Swiftcast.Cast();
+            }
+            return false;
+        }
+        
+        #endregion
+        
+        #region Custom Spells
+        
+        private static int WhiteMana
+        {
+            get
+            {
+                return ActionResourceManager.RedMage.WhiteMana;
+            }
+        }
+        
+        private static int BlackMana
+        {
+            get
+            {
+                return ActionResourceManager.RedMage.BlackMana;
+            }
+        }
+        
+        private static bool UseOffGCD
+        {
+            get
+            {
+                return ActionManager.LastSpell.Name == "Veraero" || ActionManager.LastSpell.Name == "Verthunder" || 
+                    ActionManager.LastSpell.Name == "Scatter";
+            }
         }
         
         #endregion

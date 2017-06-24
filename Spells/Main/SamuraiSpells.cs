@@ -105,6 +105,24 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
+        private Spell _fuga;
+        public Spell Fuga
+        {
+            get
+            {
+                return _fuga ??
+                       (_fuga =
+                           new Spell
+                           {
+                               Name = "Fuga",
+                               ID = 7483,
+                               Level = 26,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.AoE,
+                               CastType = CastType.Target
+                           });
+            }
+        }
         private Spell _gekko;
         public Spell Gekko
         {
@@ -141,6 +159,24 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
+        private Spell _tenkagoken;
+        public Spell TenkaGoken
+        {
+            get
+            {
+                return _tenkagoken ??
+                       (_tenkagoken =
+                           new Spell
+                           {
+                               Name = "Tenka Goken",
+                               ID = 7488,
+                               Level = 30,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.AoE,
+                               CastType = CastType.Target
+                           });
+            }
+        }
         private Spell _midaresetsugekka;
         public Spell MidareSetsugekka
         {
@@ -159,20 +195,20 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _hagakure;
-        public Spell Hagakure
+        private Spell _mangetsu;
+        public Spell Mangetsu
         {
             get
             {
-                return _hagakure ??
-                       (_hagakure =
+                return _mangetsu ??
+                       (_mangetsu =
                            new Spell
                            {
-                               Name = "Hagakure",
-                               ID = 7495,
-                               Level = 68,
+                               Name = "Mangetsu",
+                               ID = 7484,
+                               Level = 35,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Buff,
+                               SpellType = SpellType.AoE,
                                CastType = CastType.Self
                            });
             }
@@ -192,6 +228,24 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.On,
                                SpellType = SpellType.Flank,
                                CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _oka;
+        public Spell Oka
+        {
+            get
+            {
+                return _oka ??
+                       (_oka =
+                           new Spell
+                           {
+                               Name = "Oka",
+                               ID = 7485,
+                               Level = 45,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.AoE,
+                               CastType = CastType.Self
                            });
             }
         }
@@ -246,6 +300,42 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.Off,
                                SpellType = SpellType.Damage,
                                CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _hissatsukyuten;
+        public Spell HissatsuKyuten
+        {
+            get
+            {
+                return _hissatsukyuten ??
+                       (_hissatsukyuten =
+                           new Spell
+                           {
+                               Name = "Hissatsu: Kyuten",
+                               ID = 7491,
+                               Level = 64,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.AoE,
+                               CastType = CastType.Self
+                           });
+            }
+        }
+        private Spell _hagakure;
+        public Spell Hagakure
+        {
+            get
+            {
+                return _hagakure ??
+                       (_hagakure =
+                           new Spell
+                           {
+                               Name = "Hagakure",
+                               ID = 7495,
+                               Level = 68,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Buff,
+                               CastType = CastType.Self
                            });
             }
         }

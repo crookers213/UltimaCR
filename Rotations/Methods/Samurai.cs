@@ -43,7 +43,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Gekko()
         {
-            if (ActionManager.LastSpell.Name == MySpells.Jinpu.Name)
+            if (ActionManager.LastSpell.Name == MySpells.Jinpu.Name || (Core.Player.HasAura("Meikyo Shisui") && !GetsuActive))
             {
                 return await MySpells.Gekko.Cast();
             }
@@ -70,7 +70,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Kasha()
         {
-            if (ActionManager.LastSpell.Name == MySpells.Shifu.Name)
+            if (ActionManager.LastSpell.Name == MySpells.Shifu.Name || (Core.Player.HasAura("Meikyo Shisui") && !KaActive))
             {
                 return await MySpells.Kasha.Cast();
             }
@@ -89,7 +89,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Yukikaze()
         {
-            if (ActionManager.LastSpell.Name == MySpells.Hakaze.Name)
+            if (ActionManager.LastSpell.Name == MySpells.Hakaze.Name || Core.Player.HasAura("Meikyo Shisui"))
             {
                 return await MySpells.Yukikaze.Cast();
             }
@@ -98,7 +98,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Higanbana()
         {
-            if (Core.Player.CurrentTarget.CurrentHealth > 500000 && !Core.Player.CurrentTarget.HasAura("Higanbana", true, 5000) &&
+            if (Core.Player.CurrentTarget.CurrentHealth > 500000 && !Core.Player.CurrentTarget.HasAura(MySpells.Higanbana.Name, true, 5000) &&
         ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget) && NumSen == 1)
             {
                 if (await MySpells.HissatsuKaiten.Cast())
@@ -107,6 +107,21 @@ namespace UltimaCR.Rotations
                         Core.Player.HasAura("Kaiten"));
                 }
                 return await MySpells.Higanbana.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> TenkaGoken()
+        {
+            if (ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget) && NumSen == 2 &&
+        Helpers.EnemiesNearTarget(5) > 2)
+            {
+                if (await MySpells.HissatsuKaiten.Cast())
+                {
+                    await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget) &&
+                        Core.Player.HasAura("Kaiten"));
+                }
+                return await MySpells.TenkaGoken.Cast();
             }
             return false;
         }
@@ -142,18 +157,51 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> HissatsuShinten()
         {
-            if (ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && ActionResourceManager.Samurai.Kenki >= 45)
+            if (ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && Kenki >= 45)
             {
                 return await MySpells.HissatsuShinten.Cast();
             }
             return false;
         }
         
+        private async Task<bool> HissatsuKyuten()
+        {
+            if (ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && Kenki >= 45 && !Ultima.UltSettings.SingleTarget && 
+        Helpers.EnemiesNearPlayer(5) > 2)
+            {
+                return await MySpells.HissatsuKyuten.Cast();
+            }
+            return false;
+        }
+        
         private async Task<bool> Ageha()
         {
-            if (Core.Player.CurrentTarget.CurrentHealthPercent < 10)
+            return await MySpells.Ageha.Cast();
+        }
+        
+        private async Task<bool> Fuga()
+        {
+            if (Core.Player.HasAura(MySpells.Shifu.Name) && Core.Player.HasAura(MySpells.Jinpu.Name))
             {
-                return await MySpells.Ageha.Cast();
+                return await MySpells.Fuga.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Mangetsu()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.Fuga.Name && !GetsuActive)
+            {
+                return await MySpells.Mangetsu.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Oka()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.Fuga.Name && !KaActive)
+            {
+                return await MySpells.Oka.Cast();
             }
             return false;
         }
@@ -161,6 +209,14 @@ namespace UltimaCR.Rotations
         #endregion
         
         #region Custom Spells
+        
+        private static int Kenki
+        {
+            get
+            {
+                return ActionResourceManager.Samurai.Kenki;
+            }
+        }
         
         private static bool GetsuActive
         {
