@@ -27,9 +27,9 @@ namespace UltimaCR.Spells.Main
                                Name = "Mage's Ballad",
                                ID = 114,
                                Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Buff,
-                               CastType = CastType.Self
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
                            });
             }
         }
@@ -63,9 +63,9 @@ namespace UltimaCR.Spells.Main
                                Name = "Army's Paeon",
                                ID = 116,
                                Level = 40,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Buff,
-                               CastType = CastType.Self
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
                            });
             }
         }
@@ -117,9 +117,9 @@ namespace UltimaCR.Spells.Main
                                Name = "The Wanderer's Minuet",
                                ID = 3559,
                                Level = 52,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Aura,
-                               CastType = CastType.Self
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
                            });
             }
         }
@@ -189,6 +189,42 @@ namespace UltimaCR.Spells.Main
                                Name = "Sidewinder",
                                ID = 3562,
                                Level = 60,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Cooldown,
+                               CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _refulgentarrow;
+        public Spell RefulgentArrow
+        {
+            get
+            {
+                return _refulgentarrow ??
+                       (_refulgentarrow =
+                           new Spell
+                           {
+                               Name = "Refulgent Arrow",
+                               ID = 7409,
+                               Level = 70,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _pitchperfect;
+        public Spell PitchPerfect
+        {
+            get
+            {
+                return _pitchperfect ??
+                       (_pitchperfect =
+                           new Spell
+                           {
+                               Name = "Pitch Perfect",
+                               ID = 7404,
+                               Level = 52,
                                GCDType = GCDType.Off,
                                SpellType = SpellType.Cooldown,
                                CastType = CastType.Target
