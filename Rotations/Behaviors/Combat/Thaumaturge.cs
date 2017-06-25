@@ -11,9 +11,7 @@ namespace UltimaCR.Rotations
                 if (await Firestarter()) return true;
                 if (await Thundercloud()) return true;
                 if (await Scathe()) return true;
-                if (await ThunderIII()) return true;
                 if (await Thunder()) return true;
-                if (await BlizzardIII()) return true;
                 if (await FireIII()) return true;
                 if (await Blizzard()) return true;
                 if (await Swiftcast()) return true;
@@ -25,9 +23,7 @@ namespace UltimaCR.Rotations
                 if (await Firestarter()) return true;
                 if (await Thundercloud()) return true;
                 if (await Scathe()) return true;
-                if (await ThunderIII()) return true;
                 if (await Thunder()) return true;
-                if (await BlizzardIII()) return true;
                 if (await FireIII()) return true;
                 if (await Blizzard()) return true;
                 if (await Swiftcast()) return true;
@@ -38,9 +34,7 @@ namespace UltimaCR.Rotations
                 if (await Firestarter()) return true;
                 if (await Thundercloud()) return true;
                 if (await Scathe()) return true;
-                if (await ThunderIII()) return true;
                 if (await Thunder()) return true;
-                if (await BlizzardIII()) return true;
                 if (await FireIII()) return true;
                 if (await Blizzard()) return true;
                 if (await Swiftcast()) return true;

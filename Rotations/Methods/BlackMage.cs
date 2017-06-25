@@ -21,216 +21,26 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Blizzard()
         {
-            if (UmbralAura &&
-                Core.Player.CurrentManaPercent < 90)
+            if (UmbralAura && Core.Player.CurrentManaPercent < 90)
             {
                 return await MySpells.Blizzard.Cast();
             }
-            if (!UmbralAura &&
-                LowMP &&
-                !ActionManager.HasSpell(MySpells.BlizzardIII.Name))
+            if (!UmbralAura && LowMP && !ActionManager.HasSpell(MySpells.BlizzardIII.Name))
+            {
+                return await MySpells.Blizzard.Cast();
+            }
+            if (Core.Player.ClassLevel < 2)
             {
                 return await MySpells.Blizzard.Cast();
             }
             return false;
         }
-
-        private async Task<bool> Fire()
-        {
-            if (!ActionManager.HasSpell(MySpells.FireIII.Name))
-            {
-                if (UmbralAura &&
-                    Core.Player.CurrentManaPercent >= 90)
-                {
-                    return await MySpells.Fire.Cast();
-                }
-            }
-            if (!UmbralAura)
-            {
-                return await MySpells.Fire.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Transpose()
-        {
-            if (AstralAura)
-            {
-                if (!Core.Player.InCombat &&
-                    LowMP)
-                {
-                    return await MySpells.Transpose.Cast();
-                }
-            }
-            if (UmbralAura &&
-                Core.Player.HasAura("Firestarter"))
-            {
-                if (Ultima.LastSpell.Name == MySpells.Scathe.Name &&
-                    Core.Player.CurrentManaPercent != 100)
-                {
-                    await Coroutine.Wait(5000, () => Core.Player.CurrentManaPercent == 100 ||
-                                                     MovementManager.IsMoving);
-                }
-                if (Core.Player.CurrentManaPercent == 100)
-                {
-                    return await MySpells.Transpose.Cast();
-                }
-            }
-            if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
-                LowMP)
-            {
-                return await MySpells.Transpose.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Thunder()
-        {
-            if (UmbralAura &&
-                Core.Player.CurrentManaPercent < 100)
-            {
-                if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
-                    !Core.Player.CurrentTarget.HasAura("Thunder", true, 3000))
-                {
-                    return await MySpells.Thunder.Cast();
-                }
-                Spell.RecentSpell.RemoveAll(t => DateTime.UtcNow > t);
-                if (!RecentThunder)
-                {
-                    return await MySpells.Thunder.Cast();
-                }
-            }
-            if (!AstralAura &&
-                !UmbralAura)
-            {
-                if (!ActionManager.HasSpell(MySpells.ThunderII.Name) &&
-                    !Core.Player.CurrentTarget.HasAura("Thunder", true))
-                {
-                    return await MySpells.Thunder.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Surecast()
-        {
-            return await MySpells.Surecast.Cast();
-        }
-
-        private async Task<bool> Sleep()
-        {
-            return await MySpells.Sleep.Cast();
-        }
-
+        
         private async Task<bool> BlizzardII()
         {
             return await MySpells.BlizzardII.Cast();
         }
-
-        private async Task<bool> Scathe()
-        {
-            if (MovementManager.IsMoving &&
-                !LowMP &&
-                !Core.Player.HasAura(MySpells.Swiftcast.Name))
-            {
-                return await MySpells.Scathe.Cast();
-            }
-            if (ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
-                UmbralAura &&
-                Core.Player.CurrentManaPercent < 100)
-            {
-                if (Ultima.LastSpell.Name == MySpells.Blizzard.Name ||
-                    Ultima.LastSpell.Name == MySpells.Thunder.Name ||
-                    Ultima.LastSpell.Name == MySpells.ThunderII.Name ||
-                    Ultima.LastSpell.Name == MySpells.ThunderIII.Name)
-                {
-                    return await MySpells.Scathe.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> FireII()
-        {
-            if (!UmbralAura)
-            {
-                return await MySpells.FireII.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> ThunderII()
-        {
-            if (UmbralAura &&
-                Core.Player.CurrentManaPercent < 100)
-            {
-                if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) &&
-                    !Core.Player.CurrentTarget.HasAura("Thunder", true, 3000))
-                {
-                    return await MySpells.Thunder.Cast();
-                }
-                Spell.RecentSpell.RemoveAll(t => DateTime.UtcNow > t);
-                if (!RecentThunder)
-                {
-                    return await MySpells.Thunder.Cast();
-                }
-            }
-            if (!AstralAura &&
-                !UmbralAura)
-            {
-                if (!ActionManager.HasSpell(MySpells.ThunderIII.Name) &&
-                    !Core.Player.CurrentTarget.HasAura("Thunder", true))
-                {
-                    return await MySpells.Thunder.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Swiftcast()
-        {
-            if (AstralAura)
-            {
-                if (!ActionManager.CanCast(MySpells.Convert.Name, Core.Player) &&
-                    !LowMP)
-                {
-                    return await MySpells.Swiftcast.Cast();
-                }
-            }
-            return false;
-        }
-
-        private async Task<bool> Manaward()
-        {
-            return await MySpells.Manaward.Cast();
-        }
-
-        private async Task<bool> FireIII()
-        {
-            if (UmbralAura)
-            {
-                if (Core.Player.CurrentManaPercent == 100 ||
-                    Ultima.LastSpell.Name == MySpells.Scathe.Name)
-                {
-                    if (await MySpells.FireIII.Cast())
-                    {
-                        await Coroutine.Wait(5000, () => AstralAura);
-                        return true;
-                    }
-                }
-            }
-            if (!AstralAura &&
-                !UmbralAura)
-            {
-                if (await MySpells.FireIII.Cast())
-                {
-                    await Coroutine.Wait(5000, () => AstralAura);
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        
         private async Task<bool> BlizzardIII()
         {
             if (LowMP)
@@ -245,8 +55,8 @@ namespace UltimaCR.Rotations
                             return true;
                         }
                     }
-                    if (!ActionManager.CanCast(MySpells.Swiftcast.Name, Core.Player) ||
-                        !ActionManager.CanCast(MySpells.Convert.Name, Core.Player))
+                    if (!ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) || 
+                !ActionManager.CanCast(MySpells.Convert.Name, Core.Player))
                     {
                         if (await MySpells.BlizzardIII.Cast())
                         {
@@ -255,8 +65,7 @@ namespace UltimaCR.Rotations
                         }
                     }
                 }
-                if (!AstralAura &&
-                    !UmbralAura)
+                if (!AstralAura && !UmbralAura)
                 {
                     if (await MySpells.BlizzardIII.Cast())
                     {
@@ -268,64 +77,169 @@ namespace UltimaCR.Rotations
             return false;
         }
 
-        private async Task<bool> Lethargy()
+        private async Task<bool> Fire()
         {
-            return await MySpells.Lethargy.Cast();
+            if (!ActionManager.HasSpell(MySpells.FireIII.Name))
+            {
+                if (UmbralAura && Core.Player.CurrentManaPercent >= 90)
+                {
+                    return await MySpells.Fire.Cast();
+                }
+            }
+            if (!UmbralAura)
+            {
+                return await MySpells.Fire.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> FireII()
+        {
+            if (!UmbralAura)
+            {
+                return await MySpells.FireII.Cast();
+            }
+            return false;
         }
 
+        private async Task<bool> FireIII()
+        {
+            if (UmbralAura)
+            {
+                if (Core.Player.CurrentManaPercent == 100 || Ultima.LastSpell.Name == MySpells.Scathe.Name)
+                {
+                    if (await MySpells.FireIII.Cast())
+                    {
+                        await Coroutine.Wait(5000, () => AstralAura);
+                        return true;
+                    }
+                }
+            }
+            if (!AstralAura && !UmbralAura)
+            {
+                if (await MySpells.FireIII.Cast())
+                {
+                    await Coroutine.Wait(5000, () => AstralAura);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private async Task<bool> Transpose()
+        {
+            if (AstralAura)
+            {
+                if (!Core.Player.InCombat && LowMP)
+                {
+                    return await MySpells.Transpose.Cast();
+                }
+            }
+            if (UmbralAura && Core.Player.HasAura("Firestarter"))
+            {
+                if (Ultima.LastSpell.Name == MySpells.Scathe.Name && Core.Player.CurrentManaPercent != 100)
+                {
+                    await Coroutine.Wait(5000, () => Core.Player.CurrentManaPercent == 100 || MovementManager.IsMoving);
+                }
+                if (Core.Player.CurrentManaPercent == 100)
+                {
+                    return await MySpells.Transpose.Cast();
+                }
+            }
+            if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) && LowMP)
+            {
+                return await MySpells.Transpose.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Scathe()
+        {
+            if (MovementManager.IsMoving && !LowMP && !Core.Player.HasAura(MySpells.Role.Swiftcast.Name))
+            {
+                return await MySpells.Scathe.Cast();
+            }
+            if (ActionManager.HasSpell(MySpells.BlizzardIII.Name) && UmbralAura && Core.Player.CurrentManaPercent < 100)
+            {
+                if (Ultima.LastSpell.Name == MySpells.Blizzard.Name || Ultima.LastSpell.Name == MySpells.Thunder.Name ||
+            Ultima.LastSpell.Name == MySpells.ThunderII.Name || Ultima.LastSpell.Name == MySpells.ThunderIII.Name)
+                {
+                    return await MySpells.Scathe.Cast();
+                }
+            }
+            return false;
+        }
+
+        private async Task<bool> Thunder()
+        {
+            if (Core.Player.ClassLevel < 45)
+            {
+                if (UmbralAura && Core.Player.CurrentManaPercent < 100)
+                {
+                    if (!ActionManager.HasSpell(MySpells.BlizzardIII.Name) && !Core.Player.CurrentTarget.HasAura("Thunder", true, 3000))
+                    {
+                        return await MySpells.Thunder.Cast();
+                    }
+                    Spell.RecentSpell.RemoveAll(t => DateTime.UtcNow > t);
+                    if (!RecentThunder)
+                    {
+                        return await MySpells.Thunder.Cast();
+                    }
+                }
+                if (!AstralAura && !UmbralAura)
+                {
+                    if (!ActionManager.HasSpell(MySpells.ThunderII.Name) && !Core.Player.CurrentTarget.HasAura("Thunder", true))
+                    {
+                        return await MySpells.Thunder.Cast();
+                    }
+                }
+            }
+            return false;
+        }
+
+        private async Task<bool> ThunderII()
+        {
+            return false;
+        }
+        
         private async Task<bool> ThunderIII()
         {
-            if (!AstralAura &&
-                !UmbralAura &&
-                !Core.Player.CurrentTarget.HasAura("Thunder", true))
+            if (!AstralAura && !UmbralAura && !Core.Player.CurrentTarget.HasAura("Thunder", true))
             {
                 return await MySpells.ThunderIII.Cast();
             }
             return false;
         }
 
+        private async Task<bool> Sleep()
+        {
+            return await MySpells.Sleep.Cast();
+        }
+
+        private async Task<bool> Manaward()
+        {
+            return await MySpells.Manaward.Cast();
+        }
+
         private async Task<bool> AetherialManipulation()
         {
             return await MySpells.AetherialManipulation.Cast();
         }
-
-        #endregion
-
-        #region Role Spells
-
-        #endregion
-
-        #region Job Spells
-
+        
         private async Task<bool> Freeze()
         {
             return await MySpells.Freeze.Cast();
         }
 
-        private async Task<bool> Apocatastasis()
-        {
-            return await MySpells.Apocatastasis.Cast();
-        }
-
-        private async Task<bool> Manawall()
-        {
-            return await MySpells.Manawall.Cast();
-        }
-
         private async Task<bool> Flare()
         {
-            if (ActionManager.HasSpell(MySpells.Flare.Name) &&
-                AstralAura &&
-                ActionManager.CanCast(MySpells.Convert.Name, Core.Player))
+            if (ActionManager.HasSpell(MySpells.Flare.Name) && AstralAura && ActionManager.CanCast(MySpells.Convert.Name, Core.Player))
             {
-                if (Core.Player.CurrentMana <= 904 ||
-                    Ultima.LastSpell.Name == MySpells.FireII.Name &&
-                    Core.Player.CurrentMana <= 1116)
+                if (Core.Player.CurrentMana <= 904 || Ultima.LastSpell.Name == MySpells.FireII.Name && Core.Player.CurrentMana <= 1116)
                 {
-                    if (ActionManager.CanCast(MySpells.Swiftcast.Name, Core.Player) ||
-                        Core.Player.HasAura(MySpells.Swiftcast.Name))
+                    if (ActionManager.CanCast(MySpells.Role.Swiftcast.Name, Core.Player) || Core.Player.HasAura(MySpells.Role.Swiftcast.Name))
                     {
-                        if (await MySpells.Swiftcast.Cast())
+                        if (await MySpells.Role.Swiftcast.Cast())
                         {
                             await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Flare.Name, Core.Player.CurrentTarget));
                         }
@@ -371,15 +285,29 @@ namespace UltimaCR.Rotations
 
         #endregion
 
+        #region Role Spells
+        
+        private async Task<bool> Swiftcast()
+        {
+            if (AstralAura)
+            {
+                if (!ActionManager.CanCast(MySpells.Convert.Name, Core.Player) && !LowMP)
+                {
+                    return await MySpells.Role.Swiftcast.Cast();
+                }
+            }
+            return false;
+        }
+        
+        #endregion
+
         #region Custom Spells
 
         private static bool UmbralAura
         {
             get
             {
-                return (Core.Player.HasAura("Umbral Ice") ||
-                       Core.Player.HasAura("Umbral Ice II") ||
-                       Core.Player.HasAura("Umbral Ice III"));
+                return ActionResourceManager.BlackMage.UmbralStacks > 0;
             }
         }
 
@@ -387,9 +315,7 @@ namespace UltimaCR.Rotations
         {
             get
             {
-                return (Core.Player.HasAura("Astral Fire") ||
-                       Core.Player.HasAura("Astral Fire II") ||
-                       Core.Player.HasAura("Astral Fire III"));
+                return ActionResourceManager.BlackMage.AstralStacks > 0;
             }
         }
 
@@ -407,11 +333,8 @@ namespace UltimaCR.Rotations
         {
             get
             {
-                return (Core.Player.CurrentManaPercent <= 32 &&
-                    (Ultima.UltSettings.SmartTarget &&
-                    Helpers.EnemiesNearTarget(5) >= 3 ||
-                    Ultima.UltSettings.MultiTarget) ||
-                    Core.Player.CurrentManaPercent <= 26.3);
+                return (Core.Player.CurrentManaPercent <= 32 && (Ultima.UltSettings.SmartTarget && Helpers.EnemiesNearTarget(5) >= 3 || 
+                    Ultima.UltSettings.MultiTarget) || Core.Player.CurrentManaPercent <= 26.3);
             }
         }
 
@@ -421,13 +344,12 @@ namespace UltimaCR.Rotations
             {
                 if (!UmbralAura)
                 {
-                    if (Ultima.LastSpell.Name == MySpells.Fire.Name ||
-                        Ultima.LastSpell.Name == MySpells.FireII.Name ||
-                        !Core.Player.HasAura("Thundercloud", false, 5000))
+                    if (Ultima.LastSpell.Name == MySpells.Fire.Name || Ultima.LastSpell.Name == MySpells.FireII.Name ||
+                !Core.Player.HasAura("Thundercloud", false, 5000))
                     {
                         if (!ActionManager.HasSpell(MySpells.ThunderIII.Name))
                         {
-                            return await MySpells.ThunderII.Cast();
+                            return await MySpells.Thunder.Cast();
                         }
                         return await MySpells.ThunderIII.Cast();
                     }
@@ -439,7 +361,7 @@ namespace UltimaCR.Rotations
                     {
                         if (!ActionManager.HasSpell(MySpells.ThunderIII.Name))
                         {
-                            return await MySpells.ThunderII.Cast();
+                            return await MySpells.Thunder.Cast();
                         }
                         return await MySpells.ThunderIII.Cast();
                     }
@@ -450,8 +372,7 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Firestarter()
         {
-            if (!UmbralAura &&
-                Core.Player.HasAura("Firestarter"))
+            if (!UmbralAura && Core.Player.HasAura("Firestarter"))
             {
                 if (await MySpells.FireIII.Cast())
                 {
@@ -466,35 +387,6 @@ namespace UltimaCR.Rotations
 
         #region PvP Spells
 
-        private async Task<bool> AethericBurst()
-        {
-            return await MySpells.PvP.AethericBurst.Cast();
-        }
-
-        private async Task<bool> Equanimity()
-        {
-            return await MySpells.PvP.Equanimity.Cast();
-        }
-
-        private async Task<bool> ManaDraw()
-        {
-            return await MySpells.PvP.ManaDraw.Cast();
-        }
-
-        private async Task<bool> NightWing()
-        {
-            return await MySpells.PvP.NightWing.Cast();
-        }
-
-        private async Task<bool> PhantomDart()
-        {
-            return await MySpells.PvP.PhantomDart.Cast();
-        }
-
-        private async Task<bool> Purify()
-        {
-            return await MySpells.PvP.Purify.Cast();
-        }
         #endregion
     }
 }
