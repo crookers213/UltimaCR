@@ -1,6 +1,8 @@
 ﻿using Buddy.Coroutines;
 using ff14bot;
+using ff14bot.Enums;
 using ff14bot.Managers;
+using System;
 using System.Threading.Tasks;
 using UltimaCR.Spells.Main;
 
@@ -39,9 +41,15 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> VenomousBite()
         {
-            if (!Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 4000))
+            if (Core.Player.ClassLevel < 64)
             {
-                return await MySpells.VenomousBite.Cast();
+                if (!Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 4000))
+                    return await MySpells.VenomousBite.Cast();
+            }
+            else
+            {
+                if (!Core.Player.CurrentTarget.HasAura("Caustic Bite", true))
+                    return await MySpells.VenomousBite.Cast();
             }
             return false;
         }
@@ -96,9 +104,17 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Windbite()
         {
-            if (!Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 4000))
+            if (Core.Player.ClassLevel < 64)
             {
-                return await MySpells.Windbite.Cast();
+                if (!Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 4000))
+                {
+                    return await MySpells.Windbite.Cast();
+                }
+            }
+            else
+            {
+                if(!Core.Player.CurrentTarget.HasAura("Storm Bite", true))
+                    return await MySpells.Windbite.Cast();
             }
             return false;
         }
@@ -148,6 +164,33 @@ namespace UltimaCR.Rotations
         #endregion
 
         #region Job Spells
+        private async Task<bool> Songs(DateTime lastime)
+        {
+            var t = (DateTime.Now - lastime).TotalMilliseconds;
+            
+
+            if ((ActionResourceManager.Bard.ActiveSong == ActionResourceManager.Bard.BardSong.None
+                            || ActionResourceManager.Bard.Timer <= new TimeSpan(0, 0, 0, 3, 0)) 
+                            && ActionManager.ActionReady(ActionType.Spell, 114) && t >= 2000)
+                return await MySpells.MagesBallad.Cast();
+            if ((ActionResourceManager.Bard.ActiveSong == ActionResourceManager.Bard.BardSong.None
+                            || ActionResourceManager.Bard.Timer <= new TimeSpan(0, 0, 0, 3, 0))
+                            && ActionManager.ActionReady(ActionType.Spell, 3559) && t >= 2000)
+                return await MySpells.WanderersMinuet.Cast();
+            if ((ActionResourceManager.Bard.ActiveSong == ActionResourceManager.Bard.BardSong.None
+                            || ActionResourceManager.Bard.Timer <= new TimeSpan(0, 0, 0, 3, 0))
+                            && ActionManager.ActionReady(ActionType.Spell, 116) && t >= 2000)
+                return await MySpells.ArmysPaeon.Cast();
+            return false;
+        }
+
+        private async Task<bool> PitchPerfect()
+        {
+            if(ActionResourceManager.Bard.ActiveSong == ActionResourceManager.Bard.BardSong.WanderersMinuet && ActionResourceManager.Bard.Repertoire == 3 
+                || ActionResourceManager.Bard.ActiveSong == ActionResourceManager.Bard.BardSong.WanderersMinuet && ActionResourceManager.Bard.Timer<= new TimeSpan(0, 0, 0, 3, 0))
+                return await MySpells.PitchPerfect.Cast();
+            return false;
+        }
 
         private async Task<bool> MagesBallad()
         {
@@ -194,32 +237,42 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> EmpyrealArrow()
         {
-            if (Core.Player.HasAura(MySpells.StraightShot.Name, true, 4000) &&
-                Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 4000) &&
-                Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 4000) &&
-                DataManager.GetSpellData(97).Cooldown.TotalMilliseconds <= 700)
-            {
-                if (ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget))
-                {
-                    if (await MySpells.Barrage.Cast())
-                    {
-                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget));
-                    }
-                }
+            if (Core.Player.HasAura(MySpells.StraightShot.Name, true, 4000) 
+                && ActionResourceManager.Bard.ActiveSong!= ActionResourceManager.Bard.BardSong.None)
+                //{
+                //    if (ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget))
+                //    {
+                //        if (await MySpells.Barrage.Cast())
+                //        {
+                //            await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget));
+                //        }
+                //    }
+                //    return await MySpells.EmpyrealArrow.Cast();
+                //}
                 return await MySpells.EmpyrealArrow.Cast();
-            }
             return false;
         }
 
         private async Task<bool> IronJaws()
         {
-            if (Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true) &&
-                Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true))
+            if (Core.Player.ClassLevel < 64)
             {
-                if (!Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 5000) ||
-                    !Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 5000))
+                if (Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true) &&
+                    Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true))
                 {
-                    return await MySpells.IronJaws.Cast();
+                    if (!Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 5000) ||
+                        !Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 5000))
+                        return await MySpells.IronJaws.Cast();
+                }
+            }
+            else
+            {
+                if (Core.Player.CurrentTarget.HasAura("Caustic Bite", true) &&
+                    Core.Player.CurrentTarget.HasAura("Storm Bite", true))
+                {
+                    if (!Core.Player.CurrentTarget.HasAura("Caustic Bite", true, 5000) ||
+                        !Core.Player.CurrentTarget.HasAura("Storm Bite", true, 5000))
+                        return await MySpells.IronJaws.Cast();
                 }
             }
             return false;
@@ -232,14 +285,32 @@ namespace UltimaCR.Rotations
 
         private async Task<bool> Sidewinder()
         {
-            if (Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 4000) &&
-                Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 4000))
+            if (Core.Player.ClassLevel < 64)
             {
-                return await MySpells.Sidewinder.Cast();
+                if (Core.Player.CurrentTarget.HasAura(MySpells.VenomousBite.Name, true, 4000) &&
+                    Core.Player.CurrentTarget.HasAura(MySpells.Windbite.Name, true, 4000))
+                {
+                    return await MySpells.Sidewinder.Cast();
+                }
+            }
+            else
+            {
+                if (Core.Player.CurrentTarget.HasAura("Caustic Bite", true, 4000) &&
+                    Core.Player.CurrentTarget.HasAura("Storm Bite", true, 4000))
+                    return await MySpells.Sidewinder.Cast();
+
             }
             return false;
         }
 
+        private async Task<bool> RefulgentArrow()
+        {
+            if (Core.Player.HasAura("Straighter Shot"))
+            {
+                return await MySpells.RefulgentArrow.Cast();
+            }
+            return false;
+        }
         #endregion
 
         #region PvP Spells
