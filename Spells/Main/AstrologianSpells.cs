@@ -87,24 +87,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _luminiferousaether;
-        public Spell LuminiferousAether
-        {
-            get
-            {
-                return _luminiferousaether ??
-                       (_luminiferousaether =
-                           new Spell
-                           {
-                               Name = "Luminiferous Aether",
-                               ID = 3607,
-                               Level = 8,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Self
-                           });
-            }
-        }
         private Spell _helios;
         public Spell Helios
         {
@@ -159,42 +141,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _exalteddetriment;
-        public Spell ExaltedDetriment
-        {
-            get
-            {
-                return _exalteddetriment ??
-                       (_exalteddetriment =
-                           new Spell
-                           {
-                               Name = "Exalted Detriment",
-                               ID = 3602,
-                               Level = 18,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Target
-                           });
-            }
-        }
-        private Spell _stella;
-        public Spell Stella
-        {
-            get
-            {
-                return _stella ??
-                       (_stella =
-                           new Spell
-                           {
-                               Name = "Stella",
-                               ID = 3597,
-                               Level = 22,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _beneficII;
         public Spell BeneficII
         {
@@ -241,7 +187,7 @@ namespace UltimaCR.Spells.Main
                            new Spell
                            {
                                Name = "The Balance",
-                               ID = 3590,
+                               ID = 4401,
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Card,
@@ -259,7 +205,7 @@ namespace UltimaCR.Spells.Main
                            new Spell
                            {
                                Name = "The Bole",
-                               ID = 3590,
+                               ID = 4402,
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Card,
@@ -277,7 +223,7 @@ namespace UltimaCR.Spells.Main
                            new Spell
                            {
                                Name = "The Arrow",
-                               ID = 3590,
+                               ID = 4403,
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Card,
@@ -295,7 +241,7 @@ namespace UltimaCR.Spells.Main
                            new Spell
                            {
                                Name = "The Spear",
-                               ID = 3590,
+                               ID = 4404,
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Card,
@@ -313,7 +259,7 @@ namespace UltimaCR.Spells.Main
                            new Spell
                            {
                                Name = "The Ewer",
-                               ID = 3590,
+                               ID = 4405,
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Card,
@@ -331,7 +277,7 @@ namespace UltimaCR.Spells.Main
                            new Spell
                            {
                                Name = "The Spire",
-                               ID = 3590,
+                               ID = 4406,
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Card,
@@ -393,24 +339,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _disable;
-        public Spell Disable
-        {
-            get
-            {
-                return _disable ??
-                       (_disable =
-                           new Spell
-                           {
-                               Name = "Disable",
-                               ID = 3609,
-                               Level = 38,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _spread;
         public Spell Spread
         {
@@ -447,16 +375,16 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _shuffle;
-        public Spell Shuffle
+        private Spell _redraw;
+        public Spell Redraw
         {
             get
             {
-                return _shuffle ??
-                       (_shuffle =
+                return _redraw ??
+                       (_redraw =
                            new Spell
                            {
-                               Name = "Shuffle",
+                               Name = "Redraw",
                                ID = 3593,
                                Level = 45,
                                GCDType = GCDType.On,
@@ -514,8 +442,8 @@ namespace UltimaCR.Spells.Main
                                ID = 3612,
                                Level = 50,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Buff,
-                               CastType = CastType.Self
+                               SpellType = SpellType.Defensive,
+                               CastType = CastType.Target
                            });
             }
         }
@@ -606,6 +534,24 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.On,
                                SpellType = SpellType.Interrupt,
                                CastType = CastType.Self
+                           });
+            }
+        }
+        private Spell _maleficiii;
+        public Spell MaleficIII
+        {
+            get
+            {
+                return _maleficiii ??
+                       (_maleficiii =
+                           new Spell
+                           {
+                               Name = "Malefic III",
+                               ID = 7442,
+                               Level = 64,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
                            });
             }
         }

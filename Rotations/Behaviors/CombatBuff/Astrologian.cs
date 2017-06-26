@@ -7,9 +7,9 @@ namespace UltimaCR.Rotations
         public override async Task<bool> CombatBuff()
         {
             if (await Ultima.SummonChocobo()) return true;
-            if (await LuminiferousAether()) return true;
-            if (await Play()) return true;
-            return await Draw();
+            if (await LucidDreaming()) return true;
+            if (await Draw()) return true;
+            return await Protect();
         }
     }
 }

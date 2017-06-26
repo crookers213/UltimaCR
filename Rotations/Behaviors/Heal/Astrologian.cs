@@ -7,9 +7,9 @@ namespace UltimaCR.Rotations
         public override async Task<bool> Heal()
         {
             if (await EssentialDignity()) return true;
-            if (await AspectedBenefic()) return true;
             if (await BeneficII()) return true;
-            return await Benefic();
+            if (await Benefic()) return true;
+            return await AspectedBenefic();
         }
     }
 }

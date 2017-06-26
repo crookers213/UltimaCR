@@ -7,7 +7,8 @@ namespace UltimaCR.Rotations
         public override async Task<bool> PreCombatBuff()
         {
             if (await Ultima.SummonChocobo()) return true;
-            return await DiurnalSect();
+            if (await DiurnalSect()) return true;
+            return await Protect();
         }
     }
 }

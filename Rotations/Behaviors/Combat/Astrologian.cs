@@ -8,6 +8,7 @@ namespace UltimaCR.Rotations
         {
             if (await CombustII()) return true;
             if (await Combust()) return true;
+            if (await MaleficIII()) return true;
             if (await MaleficII()) return true;
             return await Malefic();
         }
