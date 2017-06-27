@@ -9,9 +9,8 @@ namespace UltimaCR.Rotations
             if (await Ultima.SummonChocobo()) return true;
             if (await Darkside()) return true;
             if (await BloodWeapon()) return true;
+            if (await CarveAndSplit()) return true;
             if (await Plunge()) return true;
-            if (await Reprisal()) return true;
-            if (await LowBlow()) return true;
             return await SaltedEarth();
         }
     }

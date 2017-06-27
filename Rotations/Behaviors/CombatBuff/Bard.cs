@@ -15,7 +15,8 @@ namespace UltimaCR.Rotations
                 t = DateTime.Now;
                 return true;
             }
-            //if (await Barrage()) return true;
+            if (await RagingStrikes()) return true;
+            if (await Barrage()) return true;
             if (await Sidewinder()) return true;
             if (await PitchPerfect()) return true;
             if (await MiserysEnd()) return true;

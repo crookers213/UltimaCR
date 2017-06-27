@@ -33,24 +33,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _shadowskin;
-        public Spell Shadowskin
-        {
-            get
-            {
-                return _shadowskin ??
-                       (_shadowskin =
-                           new Spell
-                           {
-                               Name = "Shadowskin",
-                               ID = 3618,
-                               Level = 2,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Self
-                           });
-            }
-        }
         private Spell _spinningslash;
         public Spell SpinningSlash
         {
@@ -69,24 +51,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _scourge;
-        public Spell Scourge
-        {
-            get
-            {
-                return _scourge ??
-                       (_scourge =
-                           new Spell
-                           {
-                               Name = "Scourge",
-                               ID = 3620,
-                               Level = 6,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.DoT,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _unleash;
         public Spell Unleash
         {
@@ -98,28 +62,10 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Unleash",
                                ID = 3621,
-                               Level = 8,
+                               Level = 6,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Damage,
+                               SpellType = SpellType.AoE,
                                CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _lowblow;
-        public Spell LowBlow
-        {
-            get
-            {
-                return _lowblow ??
-                       (_lowblow =
-                           new Spell
-                           {
-                               Name = "Low Blow",
-                               ID = 3622,
-                               Level = 10,
-                               GCDType = GCDType.Off,
-                               SpellType = SpellType.Interrupt,
-                               CastType = CastType.Target
                            });
             }
         }
@@ -134,7 +80,7 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Syphon Strike",
                                ID = 3623,
-                               Level = 12,
+                               Level = 10,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Damage,
                                CastType = CastType.Target
@@ -174,24 +120,6 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.Off,
                                SpellType = SpellType.Buff,
                                CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _reprisal;
-        public Spell Reprisal
-        {
-            get
-            {
-                return _reprisal ??
-                       (_reprisal =
-                           new Spell
-                           {
-                               Name = "Reprisal",
-                               ID = 3626,
-                               Level = 22,
-                               GCDType = GCDType.Off,
-                               SpellType = SpellType.Debuff,
-                               CastType = CastType.Target
                            });
             }
         }
@@ -245,24 +173,6 @@ namespace UltimaCR.Spells.Main
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Aura,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _darkdance;
-        public Spell DarkDance
-        {
-            get
-            {
-                return _darkdance ??
-                       (_darkdance =
-                           new Spell
-                           {
-                               Name = "Dark Dance",
-                               ID = 3630,
-                               Level = 34,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
                                CastType = CastType.Self
                            });
             }
@@ -375,24 +285,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _delirium;
-        public Spell Delirium
-        {
-            get
-            {
-                return _delirium ??
-                       (_delirium =
-                           new Spell
-                           {
-                               Name = "Delirium",
-                               ID = 3637,
-                               Level = 50,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _livingdead;
         public Spell LivingDead
         {
@@ -478,7 +370,7 @@ namespace UltimaCR.Spells.Main
                                ID = 3642,
                                Level = 58,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
+                               SpellType = SpellType.Debuff,
                                CastType = CastType.Target
                            });
             }
@@ -495,7 +387,7 @@ namespace UltimaCR.Spells.Main
                                Name = "Carve and Split",
                                ID = 3643,
                                Level = 60,
-                               GCDType = GCDType.On,
+                               GCDType = GCDType.Off,
                                SpellType = SpellType.Cooldown,
                                CastType = CastType.Target
                            });

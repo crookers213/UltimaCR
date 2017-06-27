@@ -79,8 +79,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> YukikazeDebuff()
         {
-            if (ActionManager.LastSpell.Name == MySpells.Hakaze.Name && 
-        !Core.Player.CurrentTarget.HasAura(819, false, 8000))
+            if (ActionManager.LastSpell.Name == MySpells.Hakaze.Name && !Core.Player.CurrentTarget.HasAura(819, false, 8000))
             {
                 return await MySpells.Yukikaze.Cast();
             }
@@ -98,13 +97,16 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Higanbana()
         {
-            if (Core.Player.CurrentTarget.CurrentHealth > 500000 && !Core.Player.CurrentTarget.HasAura(MySpells.Higanbana.Name, true, 5000) &&
-        ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget) && NumSen == 1)
+            if (NumSen == 1 && !Core.Player.CurrentTarget.HasAura(MySpells.Higanbana.Name, true, 5000) && 
+        Core.Player.CurrentTarget.CurrentHealth > 500000)
             {
-                if (await MySpells.HissatsuKaiten.Cast())
+                if (ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget))
                 {
-                    await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget) &&
-                        Core.Player.HasAura("Kaiten"));
+                    if (await MySpells.HissatsuKaiten.Cast())
+                    {
+                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget) &&
+                            Core.Player.HasAura("Kaiten"));
+                    }
                 }
                 return await MySpells.Higanbana.Cast();
             }
@@ -113,13 +115,15 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> TenkaGoken()
         {
-            if (ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget) && NumSen == 2 &&
-        Helpers.EnemiesNearTarget(5) > 2)
+            if (NumSen == 2 && Helpers.EnemiesNearTarget(5) > 2)
             {
-                if (await MySpells.HissatsuKaiten.Cast())
+                if (ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget))
                 {
-                    await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget) &&
-                        Core.Player.HasAura("Kaiten"));
+                    if (await MySpells.HissatsuKaiten.Cast())
+                    {
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura("Kaiten") && 
+                            ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget));
+                    }
                 }
                 return await MySpells.TenkaGoken.Cast();
             }
@@ -128,13 +132,16 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> MidareSetsugekka()
         {
-            if (Core.Player.CurrentTarget.CurrentHealth > 10000 && 
-        ActionManager.CanCast(MySpells.MidareSetsugekka.Name, Core.Player.CurrentTarget))
+            if (NumSen == 3 && Core.Player.CurrentTarget.CurrentHealth > 10000 && 
+        DataManager.GetSpellData(7495).Cooldown.TotalMilliseconds >= 3000)
             {
-                if (await MySpells.HissatsuKaiten.Cast())
+                if (ActionManager.CanCast(MySpells.MidareSetsugekka.Name, Core.Player.CurrentTarget))
                 {
-                    await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.MidareSetsugekka.Name, Core.Player.CurrentTarget) &&
-                        Core.Player.HasAura("Kaiten"));
+                    if (await MySpells.HissatsuKaiten.Cast())
+                    {
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura("Kaiten") &&
+                            ActionManager.CanCast(MySpells.MidareSetsugekka.Name, Core.Player.CurrentTarget));
+                    }
                 }
                 return await MySpells.MidareSetsugekka.Cast();
             }
@@ -157,7 +164,8 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> HissatsuShinten()
         {
-            if (ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && Kenki >= 45)
+            if (ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && Kenki >= 45 && 
+        DataManager.GetSpellData(7496).Cooldown.TotalMilliseconds >= 6000)
             {
                 return await MySpells.HissatsuShinten.Cast();
             }
@@ -166,12 +174,17 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> HissatsuKyuten()
         {
-            if (ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && Kenki >= 45 && !Ultima.UltSettings.SingleTarget && 
-        Helpers.EnemiesNearPlayer(5) > 2)
+            if (!Ultima.UltSettings.SingleTarget && ActionManager.LastSpell.Name != MySpells.HissatsuKaiten.Name && Kenki >= 45 && 
+        DataManager.GetSpellData(7496).Cooldown.TotalMilliseconds >= 6000 && Helpers.EnemiesNearPlayer(5) > 2)
             {
                 return await MySpells.HissatsuKyuten.Cast();
             }
             return false;
+        }
+        
+        private async Task<bool> HissatsuGuren()
+        {
+            return await MySpells.HissatsuGuren.Cast();
         }
         
         private async Task<bool> Ageha()

@@ -220,6 +220,14 @@ namespace UltimaCR.Rotations
         {
             if (!NoSong && Core.Player.HasAura(MySpells.StraightShot.Name, true, 4000))
             {
+                if (!ActionManager.HasSpell(MySpells.RefulgentArrow.Name) && 
+            ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget))
+                {
+                    if (await MySpells.Barrage.Cast())
+                    {
+                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.EmpyrealArrow.Name, Core.Player.CurrentTarget));
+                    }
+                }
                 return await MySpells.EmpyrealArrow.Cast();
             }
             return false;
@@ -256,6 +264,13 @@ namespace UltimaCR.Rotations
         {
             if (Core.Player.HasAura("Straighter Shot"))
             {
+                if (ActionManager.CanCast(MySpells.RefulgentArrow.Name, Core.Player.CurrentTarget))
+                {
+                    if (await MySpells.Barrage.Cast())
+                    {
+                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.RefulgentArrow.Name, Core.Player.CurrentTarget));
+                    }
+                }
                 return await MySpells.RefulgentArrow.Cast();
             }
             return false;

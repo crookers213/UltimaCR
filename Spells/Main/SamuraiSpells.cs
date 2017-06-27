@@ -333,9 +333,27 @@ namespace UltimaCR.Spells.Main
                                Name = "Hagakure",
                                ID = 7495,
                                Level = 68,
-                               GCDType = GCDType.On,
+                               GCDType = GCDType.Off,
                                SpellType = SpellType.Buff,
                                CastType = CastType.Self
+                           });
+            }
+        }
+        private Spell _hissatsuguren;
+        public Spell HissatsuGuren
+        {
+            get
+            {
+                return _hissatsuguren ??
+                       (_hissatsuguren =
+                           new Spell
+                           {
+                               Name = "HissatsuGuren",
+                               ID = 7496,
+                               Level = 70,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
                            });
             }
         }

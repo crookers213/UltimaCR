@@ -15,18 +15,13 @@ namespace UltimaCR.Rotations
             get { return _mySpells ?? (_mySpells = new DarkKnightSpells()); }
         }
 
-        #region Job Spells
-
+        #region ST
+        
         private async Task<bool> HardSlash()
         {
             return await MySpells.HardSlash.Cast();
         }
-
-        private async Task<bool> Shadowskin()
-        {
-            return await MySpells.Shadowskin.Cast();
-        }
-
+        
         private async Task<bool> SpinningSlash()
         {
             if (ActionManager.LastSpell.Name == MySpells.HardSlash.Name)
@@ -35,72 +30,7 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
-
-        private async Task<bool> Scourge()
-        {
-            if (!Core.Player.CurrentTarget.HasAura(MySpells.Scourge.Name, true, 4000) &&
-                !Core.Player.HasAura(MySpells.DarkArts.Name))
-            {
-                return await MySpells.Scourge.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Unleash()
-        {
-            if (Core.Player.HasAura(814) &&
-                Helpers.EnemiesNearPlayer(5) > 0)
-            {
-                return await MySpells.Unleash.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> LowBlow()
-        {
-            if (Ultima.UltSettings.DarkKnightLowBlow)
-            {
-                return await MySpells.LowBlow.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> SyphonStrike()
-        {
-            if (ActionManager.LastSpell.Name == MySpells.HardSlash.Name)
-            {
-                return await MySpells.SyphonStrike.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Unmend()
-        {
-            if (Core.Player.TargetDistance(10))
-            {
-                return await MySpells.Unmend.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> BloodWeapon()
-        {
-            if (Ultima.UltSettings.DarkKnightBloodWeapon)
-            {
-                return await MySpells.BloodWeapon.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> Reprisal()
-        {
-            if (Ultima.UltSettings.DarkKnightReprisal)
-            {
-                return await MySpells.Reprisal.Cast();
-            }
-            return false;
-        }
-
+        
         private async Task<bool> PowerSlash()
         {
             if (ActionManager.LastSpell.Name == MySpells.SpinningSlash.Name)
@@ -109,42 +39,26 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
-
-        private async Task<bool> Darkside()
+        
+        private async Task<bool> SyphonStrike()
         {
-            if (!Core.Player.HasAura(MySpells.Darkside.Name))
+            if (ActionManager.LastSpell.Name == MySpells.HardSlash.Name)
             {
-                return await MySpells.Darkside.Cast();
+                if (Core.Player.CurrentManaPercent < 50 || (ActionManager.HasSpell(MySpells.Souleater.Name) &&
+            Core.Player.CurrentHealthPercent < 70))
+                {
+                    return await MySpells.SyphonStrike.Cast();
+                }
             }
             return false;
         }
-
-        private async Task<bool> Grit()
-        {
-            return await MySpells.Grit.Cast();
-        }
-
-        private async Task<bool> DarkDance()
-        {
-            return await MySpells.DarkDance.Cast();
-        }
-
-        private async Task<bool> BloodPrice()
-        {
-            return await MySpells.BloodPrice.Cast();
-        }
-
+        
         private async Task<bool> Souleater()
         {
             if (ActionManager.LastSpell.Name == MySpells.SyphonStrike.Name)
             {
-                if (Ultima.UltSettings.DarkKnightDarkArts &&
-                    !Core.Player.HasAura(MySpells.DarkArts.Name) &&
-                    Core.Player.TargetDistance(3, false) &&
-                    Core.Player.CurrentManaPercent >= 50 &&
-                    (!ActionManager.HasSpell(MySpells.Delirium.Name) ||
-                    Core.Player.CurrentTarget.HasAura(MySpells.Delirium.Name, false, 4000) ||
-                    Core.Player.CurrentTarget.HasAura("Dragon Kick")))
+                if (Ultima.UltSettings.DarkKnightDarkArts && !Core.Player.HasAura(MySpells.DarkArts.Name) &&
+            Core.Player.TargetDistance(3, false) && Core.Player.CurrentManaPercent >= 50)
                 {
                     if (await MySpells.DarkArts.Cast())
                     {
@@ -155,45 +69,44 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
-
+        
+        private async Task<bool> Unmend()
+        {
+            if (Core.Player.TargetDistance(10))
+            {
+                return await MySpells.Unmend.Cast();
+            }
+            return false;
+        }
+        
+        #endregion
+        
+        #region AoE
+        
+        private async Task<bool> Unleash()
+        {
+            return await MySpells.Unleash.Cast();
+        }
+        
         private async Task<bool> DarkPassenger()
         {
             return await MySpells.DarkPassenger.Cast();
         }
-
-        private async Task<bool> DarkMind()
+        
+        private async Task<bool> AbyssalDrain()
         {
-            return await MySpells.DarkMind.Cast();
+            return await MySpells.AbyssalDrain.Cast();
         }
-
+        
+        #endregion
+        
+        #region Off-GCD
+        
         private async Task<bool> DarkArts()
         {
             return await MySpells.DarkArts.Cast();
         }
-
-        private async Task<bool> ShadowWall()
-        {
-            return await MySpells.ShadowWall.Cast();
-        }
-
-        private async Task<bool> Delirium()
-        {
-            if (Ultima.UltSettings.DarkKnightDelirium &&
-                ActionManager.LastSpell.Name == MySpells.SyphonStrike.Name &&
-                !Core.Player.HasAura(MySpells.DarkArts.Name) &&
-                !Core.Player.CurrentTarget.HasAura(MySpells.Delirium.Name, false, 4000) &&
-                !Core.Player.CurrentTarget.HasAura("Dragon Kick"))
-            {
-                return await MySpells.Delirium.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> LivingDead()
-        {
-            return await MySpells.LivingDead.Cast();
-        }
-
+        
         private async Task<bool> SaltedEarth()
         {
             if (Ultima.UltSettings.DarkKnightSaltedEarth)
@@ -211,17 +124,7 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
-
-        private async Task<bool> AbyssalDrain()
-        {
-            return await MySpells.AbyssalDrain.Cast();
-        }
-
-        private async Task<bool> SoleSurvivor()
-        {
-            return await MySpells.SoleSurvivor.Cast();
-        }
-
+        
         private async Task<bool> CarveAndSplit()
         {
             if (Core.Player.CurrentManaPercent < 70)
@@ -230,14 +133,74 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
+        
+        #endregion
+        
+        #region Buffs
+        
+        private async Task<bool> BloodWeapon()
+        {
+            if (Ultima.UltSettings.DarkKnightBloodWeapon)
+            {
+                return await MySpells.BloodWeapon.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Grit()
+        {
+            if (!Core.Player.HasAura(MySpells.Grit.Name))
+            {
+                return await MySpells.Grit.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> Darkside()
+        {
+            if (!Core.Player.HasAura(MySpells.Darkside.Name))
+            {
+                return await MySpells.Darkside.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> BloodPrice()
+        {
+            return await MySpells.BloodPrice.Cast();
+        }
+        
+        private async Task<bool> DarkMind()
+        {
+            return await MySpells.DarkMind.Cast();
+        }
+        
+        private async Task<bool> ShadowWall()
+        {
+            return await MySpells.ShadowWall.Cast();
+        }
+
+        private async Task<bool> LivingDead()
+        {
+            return await MySpells.LivingDead.Cast();
+        }
+        
+        #endregion
+        
+        #region Debuffs
+        
+        private async Task<bool> SoleSurvivor()
+        {
+            return await MySpells.SoleSurvivor.Cast();
+        }
+        
+        #endregion
+        
+        #region Role
 
         #endregion
 
-        #region Role Spells
-
-        #endregion
-
-        #region PvP Spells
+        #region PvP
 
         #endregion
     }
