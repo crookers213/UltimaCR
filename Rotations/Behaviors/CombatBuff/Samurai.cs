@@ -9,8 +9,8 @@ namespace UltimaCR.Rotations
             if (await Ultima.SummonChocobo()) return true;
             if (await HissatsuGuren()) return true;
             if (await HissatsuKyuten()) return true;
+            if (await HissatsuSeigan()) return true;
             if (await HissatsuShinten()) return true;
-            if (await Hagakure()) return true;
             if (await Invigorate()) return true;
             return await Ageha();
         }

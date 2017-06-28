@@ -8,9 +8,11 @@ namespace UltimaCR.Rotations
         {
             if (Ultima.UltSettings.SmartTarget)
             {
+                if (await Hagakure()) return true;
                 if (await MidareSetsugekka()) return true;
                 if (await TenkaGoken()) return true;
                 if (await Higanbana()) return true;
+                if (await Meikyo()) return true;
                 if (await Kasha()) return true;
                 if (await Gekko()) return true;
                 if (await ShifuBuff()) return true;
@@ -26,8 +28,10 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.SingleTarget)
             {
+                if (await Hagakure()) return true;
                 if (await MidareSetsugekka()) return true;
                 if (await Higanbana()) return true;
+                if (await Meikyo()) return true;
                 if (await Kasha()) return true;
                 if (await Gekko()) return true;
                 if (await ShifuBuff()) return true;
@@ -40,8 +44,10 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.MultiTarget)
             {
+                if (await Hagakure()) return true;
                 if (await MidareSetsugekka()) return true;
                 if (await TenkaGoken()) return true;
+                if (await Meikyo()) return true;
                 if (await Kasha()) return true;
                 if (await Gekko()) return true;
                 if (await ShifuBuff()) return true;

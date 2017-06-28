@@ -8,6 +8,7 @@ namespace UltimaCR.Rotations
         {
             if (Ultima.UltSettings.SmartTarget)
             {
+                if (await Drain()) return true;
                 if (await EnchantedMoulinet()) return true;
                 if (await Scatter()) return true;
                 if (await Verholy()) return true;
@@ -26,6 +27,7 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.SingleTarget)
             {
+                if (await Drain()) return true;
                 if (await Verholy()) return true;
                 if (await Verflare()) return true;
                 if (await EnchantedRiposte()) return true;
@@ -42,6 +44,7 @@ namespace UltimaCR.Rotations
             }
             if (Ultima.UltSettings.MultiTarget)
             {
+                if (await Drain()) return true;
                 if (await EnchantedMoulinet()) return true;
                 return await Scatter();
             }

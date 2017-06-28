@@ -173,14 +173,23 @@ namespace UltimaCR.Rotations
 
         #endregion
         
-        #region Cross Class Spells
+        #region Role Spells
         
         private async Task<bool> Swiftcast()
         {
-            /*if (UseOffGCD)
+            if (UseOffGCD)
             {
                 return await MySpells.Role.Swiftcast.Cast();
-            }*/
+            }
+            return false;
+        }
+        
+        private async Task<bool> Drain()
+        {
+            if (!ActionManager.HasSpell(MySpells.Vercure.Name) && Core.Player.CurrentHealthPercent < 90)
+            {
+                return await MySpells.Role.Drain.Cast();
+            }
             return false;
         }
         

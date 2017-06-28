@@ -285,6 +285,24 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
+        private Spell _mercifuleyes;
+        public Spell MercifulEyes
+        {
+            get
+            {
+                return _mercifuleyes ??
+                       (_mercifuleyes =
+                           new Spell
+                           {
+                               Name = "Merciful Eyes",
+                               ID = 7502,
+                               Level = 58,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Heal,
+                               CastType = CastType.Self
+                           });
+            }
+        }
         private Spell _hissatsushinten;
         public Spell HissatsuShinten
         {
@@ -321,6 +339,24 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
+        private Spell _hissatsuseigan;
+        public Spell HissatsuSeigan
+        {
+            get
+            {
+                return _hissatsuseigan ??
+                       (_hissatsuseigan =
+                           new Spell
+                           {
+                               Name = "Hissatsu: Seigan",
+                               ID = 7501,
+                               Level = 66,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Damage,
+                               CastType = CastType.Target
+                           });
+            }
+        }
         private Spell _hagakure;
         public Spell Hagakure
         {
@@ -333,7 +369,7 @@ namespace UltimaCR.Spells.Main
                                Name = "Hagakure",
                                ID = 7495,
                                Level = 68,
-                               GCDType = GCDType.Off,
+                               GCDType = GCDType.On,
                                SpellType = SpellType.Buff,
                                CastType = CastType.Self
                            });
@@ -348,7 +384,7 @@ namespace UltimaCR.Spells.Main
                        (_hissatsuguren =
                            new Spell
                            {
-                               Name = "HissatsuGuren",
+                               Name = "Hissatsu: Guren",
                                ID = 7496,
                                Level = 70,
                                GCDType = GCDType.Off,
