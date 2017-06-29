@@ -70,7 +70,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Meikyo()
         {
-            if (Core.Player.HasAura("Meikyo Shisui"))
+            if (Core.Player.HasAura(1233))
             {
                 if (!GetsuActive)
                 {
@@ -90,13 +90,13 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> MidareSetsugekka()
         {
-            if (NumSen == 3 && Core.Player.CurrentTarget.CurrentHealth > 10000)
+            if (NumSen == 3 && Core.Player.CurrentTarget.CurrentHealth > 10000 && !MovementManager.IsMoving)
             {
                 if (ActionManager.CanCast(MySpells.MidareSetsugekka.Name, Core.Player.CurrentTarget))
                 {
                     if (await MySpells.HissatsuKaiten.Cast())
                     {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura("Kaiten") &&
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(1229) && 
                             ActionManager.CanCast(MySpells.MidareSetsugekka.Name, Core.Player.CurrentTarget));
                     }
                 }
@@ -108,8 +108,11 @@ namespace UltimaCR.Rotations
         private async Task<bool> Hagakure()
         {
             if ((ActionManager.LastSpell.Name == MySpells.Jinpu.Name && GetsuActive) || 
-        (ActionManager.LastSpell.Name == MySpells.Shifu.Name && KaActive) || 
-        (NumSen == 3 && Helpers.EnemiesNearPlayer(5) > 2))
+        (ActionManager.LastSpell.Name == MySpells.Shifu.Name && KaActive))
+            {
+                return await MySpells.Hagakure.Cast();
+            }
+            if (NumSen == 3 && (Helpers.EnemiesNearPlayer(5) > 2 || MovementManager.IsMoving))
             {
                 return await MySpells.Hagakure.Cast();
             }
@@ -149,13 +152,13 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> TenkaGoken()
         {
-            if (NumSen == 2 && Helpers.EnemiesNearTarget(5) > 2)
+            if (NumSen == 2 && Helpers.EnemiesNearTarget(5) > 2 && !MovementManager.IsMoving)
             {
                 if (ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget))
                 {
                     if (await MySpells.HissatsuKaiten.Cast())
                     {
-                        await Coroutine.Wait(3000, () => Core.Player.HasAura("Kaiten") && 
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(1229) && 
                             ActionManager.CanCast(MySpells.TenkaGoken.Name, Core.Player.CurrentTarget));
                     }
                 }
@@ -255,14 +258,14 @@ namespace UltimaCR.Rotations
         private async Task<bool> Higanbana()
         {
             if (NumSen == 1 && !Core.Player.CurrentTarget.HasAura(MySpells.Higanbana.Name, true, 5000) && 
-        Core.Player.CurrentTarget.CurrentHealth > 500000)
+        Core.Player.CurrentTarget.CurrentHealth > 500000 && !MovementManager.IsMoving)
             {
                 if (ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget))
                 {
                     if (await MySpells.HissatsuKaiten.Cast())
                     {
-                        await Coroutine.Wait(3000, () => ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget) &&
-                            Core.Player.HasAura("Kaiten"));
+                        await Coroutine.Wait(3000, () => Core.Player.HasAura(1229) && 
+                            ActionManager.CanCast(MySpells.Higanbana.Name, Core.Player.CurrentTarget));
                     }
                 }
                 return await MySpells.Higanbana.Cast();

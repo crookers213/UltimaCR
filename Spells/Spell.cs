@@ -222,9 +222,9 @@ namespace UltimaCR.Spells
                     return false;
                 }
 
-                if (Pet.PetMode != PetMode.Obey)
+                if (PetManager.PetMode != PetMode.Obey)
                 {
-                    if (!await Coroutine.Wait(1000, () => Pet.DoAction("Obey", Core.Player)))
+                    if (!await Coroutine.Wait(1000, () => PetManager.DoAction("Obey", Core.Player)))
                     {
                         return false;
                     }
@@ -242,7 +242,7 @@ namespace UltimaCR.Spells
 
                 #region CanCast
 
-                if (!Pet.CanCast(Name, target))
+                if (!PetManager.CanCast(Name, target))
                 {
                     return false;
                 }
@@ -251,7 +251,7 @@ namespace UltimaCR.Spells
 
                 #region DoAction
 
-                if (!await Coroutine.Wait(5000, () => Pet.DoAction(Name, target)))
+                if (!await Coroutine.Wait(5000, () => PetManager.DoAction(Name, target)))
                 {
                     return false;
                 }

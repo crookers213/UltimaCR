@@ -186,7 +186,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Drain()
         {
-            if (!ActionManager.HasSpell(MySpells.Vercure.Name) && Core.Player.CurrentHealthPercent < 90)
+            if (!ActionManager.HasSpell(MySpells.Vercure.Name) && Core.Player.CurrentHealthPercent < 60)
             {
                 return await MySpells.Role.Drain.Cast();
             }

@@ -304,46 +304,46 @@ namespace UltimaCR
             if (UltSettings.SummonChocobo &&
                 BotManager.Current.IsAutonomous &&
                 !MovementManager.IsMoving &&
-                Chocobo.CanSummon &&
+                ChocoboManager.CanSummon &&
                 Helpers.PartyMembers.All(c => c.SummonerObjectId != Core.Player.ObjectId))
             {
-                Chocobo.Summon();
-                await Coroutine.Wait(1000, () => Chocobo.Summoned);
-                if (!Chocobo.Summoned)
+                ChocoboManager.Summon();
+                await Coroutine.Wait(1000, () => ChocoboManager.Summoned);
+                if (!ChocoboManager.Summoned)
                 {
                     return await SummonChocobo();
                 }
-                if (Chocobo.Summoned)
+                if (ChocoboManager.Summoned)
                 {
                     if (UltSettings.ChocoboFreeStance &&
-                        Chocobo.Stance != CompanionStance.Free)
+                        ChocoboManager.Stance != CompanionStance.Free)
                     {
-                        Chocobo.FreeStance();
-                        await Coroutine.Wait(2000, () => Chocobo.Stance == CompanionStance.Free);
+                        ChocoboManager.FreeStance();
+                        await Coroutine.Wait(2000, () => ChocoboManager.Stance == CompanionStance.Free);
                         return true;
                     }
 
                     if (UltSettings.ChocoboDefenderStance &&
-                        Chocobo.Stance != CompanionStance.Defender)
+                        ChocoboManager.Stance != CompanionStance.Defender)
                     {
-                        Chocobo.DefenderStance();
-                        await Coroutine.Wait(2000, () => Chocobo.Stance == CompanionStance.Defender);
+                        ChocoboManager.DefenderStance();
+                        await Coroutine.Wait(2000, () => ChocoboManager.Stance == CompanionStance.Defender);
                         return true;
                     }
 
                     if (UltSettings.ChocoboAttackerStance &&
-                        Chocobo.Stance != CompanionStance.Attacker)
+                        ChocoboManager.Stance != CompanionStance.Attacker)
                     {
-                        Chocobo.AttackerStance();
-                        await Coroutine.Wait(2000, () => Chocobo.Stance == CompanionStance.Attacker);
+                        ChocoboManager.AttackerStance();
+                        await Coroutine.Wait(2000, () => ChocoboManager.Stance == CompanionStance.Attacker);
                         return true;
                     }
 
                     if (UltSettings.ChocoboHealerStance &&
-                        Chocobo.Stance != CompanionStance.Healer)
+                        ChocoboManager.Stance != CompanionStance.Healer)
                     {
-                        Chocobo.HealerStance();
-                        await Coroutine.Wait(2000, () => Chocobo.Stance == CompanionStance.Healer);
+                        ChocoboManager.HealerStance();
+                        await Coroutine.Wait(2000, () => ChocoboManager.Stance == CompanionStance.Healer);
                         return true;
                     }
                 }
