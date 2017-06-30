@@ -33,20 +33,20 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _rampart;
-        public Spell Rampart
+        private Spell _fightorflight;
+        public Spell FightOrFlight
         {
             get
             {
-                return _rampart ??
-                       (_rampart =
+                return _fightorflight ??
+                       (_fightorflight =
                            new Spell
                            {
-                               Name = "Rampart",
-                               ID = 10,
+                               Name = "Fight or Flight",
+                               ID = 20,
                                Level = 2,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Buff,
                                CastType = CastType.Self
                            });
             }
@@ -69,24 +69,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _fightorflight;
-        public Spell FightOrFlight
-        {
-            get
-            {
-                return _fightorflight ??
-                       (_fightorflight =
-                           new Spell
-                           {
-                               Name = "Fight or Flight",
-                               ID = 20,
-                               Level = 6,
-                               GCDType = GCDType.Off,
-                               SpellType = SpellType.Buff,
-                               CastType = CastType.Self
-                           });
-            }
-        }
         private Spell _flash;
         public Spell Flash
         {
@@ -98,27 +80,9 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Flash",
                                ID = 14,
-                               Level = 8,
+                               Level = 6,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _convalescence;
-        public Spell Convalescence
-        {
-            get
-            {
-                return _convalescence ??
-                       (_convalescence =
-                           new Spell
-                           {
-                               Name = "Convalescence",
-                               ID = 12,
-                               Level = 10,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
+                               SpellType = SpellType.AoE,
                                CastType = CastType.Self
                            });
             }
@@ -134,7 +98,7 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Riot Blade",
                                ID = 15,
-                               Level = 12,
+                               Level = 10,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Damage,
                                CastType = CastType.Target
@@ -177,24 +141,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _provoke;
-        public Spell Provoke
-        {
-            get
-            {
-                return _provoke ??
-                       (_provoke =
-                           new Spell
-                           {
-                               Name = "Provoke",
-                               ID = 18,
-                               Level = 22,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
-                               CastType = CastType.Target
-                           });
-            }
-        }
         private Spell _rageofhalone;
         public Spell RageOfHalone
         {
@@ -208,7 +154,7 @@ namespace UltimaCR.Spells.Main
                                ID = 21,
                                Level = 26,
                                GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
+                               SpellType = SpellType.Damage,
                                CastType = CastType.Target
                            });
             }
@@ -225,27 +171,9 @@ namespace UltimaCR.Spells.Main
                                Name = "Shield Swipe",
                                ID = 25,
                                Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Debuff,
+                               GCDType = GCDType.Off,
+                               SpellType = SpellType.Damage,
                                CastType = CastType.Target
-                           });
-            }
-        }
-        private Spell _awareness;
-        public Spell Awareness
-        {
-            get
-            {
-                return _awareness ??
-                       (_awareness =
-                           new Spell
-                           {
-                               Name = "Awareness",
-                               ID = 13,
-                               Level = 34,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Defensive,
-                               CastType = CastType.Self
                            });
             }
         }

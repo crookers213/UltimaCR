@@ -1,6 +1,8 @@
 ﻿using ff14bot;
 using ff14bot.Managers;
+using System.Linq;
 using System.Threading.Tasks;
+using UltimaCR.Spells;
 using UltimaCR.Spells.Main;
 
 namespace UltimaCR.Rotations
@@ -14,11 +16,11 @@ namespace UltimaCR.Rotations
             get { return _mySpells ?? (_mySpells = new AstrologianSpells()); }
         }
 
-        #region Job Spells
-
+        #region ST
+        
         private async Task<bool> Malefic()
         {
-            if (Core.Player.ClassLevel < 54)
+            if (!ActionManager.HasSpell(MySpells.MaleficII.Name))
             {
                 return await MySpells.Malefic.Cast();
             }
@@ -27,7 +29,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> MaleficII()
         {
-            if (Core.Player.ClassLevel < 64)
+            if (!ActionManager.HasSpell(MySpells.MaleficIII.Name))
             {
                 return await MySpells.MaleficII.Cast();
             }
@@ -39,27 +41,27 @@ namespace UltimaCR.Rotations
             return await MySpells.MaleficIII.Cast();
         }
         
-        private async Task<bool> Combust()
+        #endregion
+        
+        #region AoE
+        
+        private async Task<bool> Gravity()
         {
-            if (Core.Player.ClassLevel < 46 && !Core.Player.CurrentTarget.HasAura(MySpells.Combust.Name, true, 4000))
+            if (Helpers.EnemiesNearTarget(5) > 2 && Core.Player.CurrentManaPercent > 40)
             {
-                return await MySpells.Combust.Cast();
+                return await MySpells.Gravity.Cast();
             }
             return false;
         }
         
-        private async Task<bool> CombustII()
-        {
-            if (!Core.Player.CurrentTarget.HasAura(MySpells.CombustII.Name, true, 4000))
-            {
-                return await MySpells.CombustII.Cast();
-            }
-            return false;
-        }
+        #endregion
+        
+        #region Heals
         
         private async Task<bool> Benefic()
         {
-            if (Core.Player.ClassLevel < 26 && Ultima.UltSettings.AstrologianBenefic && Core.Player.CurrentHealthPercent < 50)
+            if (Ultima.UltSettings.AstrologianBenefic && !ActionManager.HasSpell(MySpells.BeneficII.Name) && 
+        Core.Player.CurrentHealthPercent < 50)
             {
                 return await MySpells.Benefic.Cast();
             }
@@ -85,6 +87,15 @@ namespace UltimaCR.Rotations
             return false;
         }
         
+        #endregion
+        
+        #region Off-GCD
+        
+        private async Task<bool> Lightspeed()
+        {
+            return await MySpells.Lightspeed.Cast();
+        }
+        
         private async Task<bool> EssentialDignity()
         {
             if (Ultima.UltSettings.AstrologianEssentialDignity && Core.Player.CurrentHealthPercent < 30)
@@ -93,6 +104,68 @@ namespace UltimaCR.Rotations
             }
             return false;
         }
+        
+        private async Task<bool> Draw()
+        {
+            if (Ultima.UltSettings.AstrologianDraw)
+            {
+                return await MySpells.Draw.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Spread()
+        {
+            if ((HasSpread && HasBuff) || (!HasSpread && !HasBuff))
+            {
+                return await MySpells.Spread.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> RoyalRoad()
+        {
+            if (BoleActive || SpearActive)
+            {
+                return await MySpells.RoyalRoad.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Redraw()
+        {
+            if (!BalanceActive && !ArrowActive)
+            {
+                return await MySpells.Redraw.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> Undraw()
+        {
+            if (DataManager.GetSpellData(3593).Cooldown.TotalSeconds <= 27)
+            {
+                if (EwerActive || SpireActive)
+                {
+                    return await MySpells.Undraw.Cast();
+                }
+            }
+            return false;
+        }
+        
+        private async Task<bool> Synastry()
+        {
+            return await MySpells.Synastry.Cast();
+        }
+        
+        private async Task<bool> TimeDilation()
+        {
+            return await MySpells.TimeDilation.Cast();
+        }
+        
+        #endregion
+        
+        #region Buffs
         
         private async Task<bool> DiurnalSect()
         {
@@ -108,60 +181,28 @@ namespace UltimaCR.Rotations
             return await MySpells.NocturnalSect.Cast();
         }
         
-        private async Task<bool> Lightspeed()
-        {
-            return await MySpells.Lightspeed.Cast();
-        }
+        #endregion
         
-        private async Task<bool> Draw()
+        #region Debuffs
+        
+        private async Task<bool> Combust()
         {
-            if (Ultima.UltSettings.AstrologianDraw)
+            if (!ActionManager.HasSpell(MySpells.CombustII.Name) && !Core.Player.CurrentTarget.HasAura(MySpells.Combust.Name, true, 4000))
             {
-                return await MySpells.Draw.Cast();
+                return await MySpells.Combust.Cast();
             }
             return false;
         }
-
-        private async Task<bool> RoyalRoad()
+        
+        private async Task<bool> CombustII()
         {
-            return await MySpells.RoyalRoad.Cast();
+            if (!Core.Player.CurrentTarget.HasAura(MySpells.CombustII.Name, true, 4000))
+            {
+                return await MySpells.CombustII.Cast();
+            }
+            return false;
         }
         
-        private async Task<bool> Spread()
-        {
-            return await MySpells.Spread.Cast();
-        }
-        
-        private async Task<bool> Redraw()
-        {
-            return await MySpells.Redraw.Cast();
-        }
-
-        private async Task<bool> Synastry()
-        {
-            return await MySpells.Synastry.Cast();
-        }
-        
-        private async Task<bool> Gravity()
-        {
-            return await MySpells.Gravity.Cast();
-        }
-        
-        private async Task<bool> TimeDilation()
-        {
-            return await MySpells.TimeDilation.Cast();
-        }
-        
-        private async Task<bool> CollectiveUnconscious()
-        {
-            return await MySpells.CollectiveUnconscious.Cast();
-        }
-        
-        private async Task<bool> CelestialOpposition()
-        {
-            return await MySpells.CelestialOpposition.Cast();
-        }
-
         #endregion
 
         #region Role Spells
@@ -212,7 +253,95 @@ namespace UltimaCR.Rotations
         {
             get
             {
-                return ActionResourceManager.Astrologian.Arcana != ActionResourceManager.Astrologian.AstrologianCard.None;
+                return ActionResourceManager.Astrologian.Cards[0] != ActionResourceManager.Astrologian.AstrologianCard.None;
+            }
+        }
+        
+        private static bool HasSpread
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[1] != ActionResourceManager.Astrologian.AstrologianCard.None;
+            }
+        }
+        
+        private static bool HasBuff
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Buff != ActionResourceManager.Astrologian.AstrologianCardBuff.None;
+            }
+        }
+        
+        private static bool BuffDuration
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Buff == ActionResourceManager.Astrologian.AstrologianCardBuff.Duration;
+            }
+        }
+        
+        private static bool BuffPotency
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Buff == ActionResourceManager.Astrologian.AstrologianCardBuff.Potency;
+            }
+        }
+        
+        private static bool BuffShared
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Buff == ActionResourceManager.Astrologian.AstrologianCardBuff.Shared;
+            }
+        }
+        
+        private static bool BalanceActive
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[0] == ActionResourceManager.Astrologian.AstrologianCard.Balance;
+            }
+        }
+        
+        private static bool BoleActive
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[0] == ActionResourceManager.Astrologian.AstrologianCard.Bole;
+            }
+        }
+        
+        private static bool ArrowActive
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[0] == ActionResourceManager.Astrologian.AstrologianCard.Arrow;
+            }
+        }
+        
+        private static bool SpearActive
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[0] == ActionResourceManager.Astrologian.AstrologianCard.Spear;
+            }
+        }
+        
+        private static bool EwerActive
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[0] == ActionResourceManager.Astrologian.AstrologianCard.Ewer;
+            }
+        }
+        
+        private static bool SpireActive
+        {
+            get
+            {
+                return ActionResourceManager.Astrologian.Cards[0] == ActionResourceManager.Astrologian.AstrologianCard.Spire;
             }
         }
 

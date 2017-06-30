@@ -1195,6 +1195,24 @@ namespace UltimaCR.Settings.Forms
 
             #endregion
 
+            #region Samurai Settings
+
+            SamuraiSecondWind.Checked = Ultima.UltSettings.SamuraiSecondWind;
+            SamuraiArmsLength.Checked = Ultima.UltSettings.SamuraiArmsLength;
+            SamuraiLegSweep.Checked = Ultima.UltSettings.SamuraiLegSweep;
+            SamuraiDiversion.Checked = Ultima.UltSettings.SamuraiDiversion;
+            SamuraiInvigorate.Checked = Ultima.UltSettings.SamuraiInvigorate;
+            SamuraiBloodbath.Checked = Ultima.UltSettings.SamuraiBloodbath;
+            SamuraiGoad.Checked = Ultima.UltSettings.SamuraiGoad;
+            SamuraiFeint.Checked = Ultima.UltSettings.SamuraiFeint;
+            SamuraiCrutch.Checked = Ultima.UltSettings.SamuraiCrutch;
+            SamuraiTrueNorth.Checked = Ultima.UltSettings.SamuraiTrueNorth;
+            SamuraiSecondWindUpDown.Value = Ultima.UltSettings.SamuraiSecondWindPct;
+            SamuraiBloodbathUpDown.Value = Ultima.UltSettings.SamuraiBloodbathPct;
+            SamuraiInvigorateUpDown.Value = Ultima.UltSettings.SamuraiInvigoratePct;
+
+            #endregion
+
             #region Scholar Settings
 
             #region Conjurer Cross-Class
@@ -4074,6 +4092,75 @@ namespace UltimaCR.Settings.Forms
 
         #endregion
 
+        #region Samurai Settings
+
+        private void SamuraiSecondWind_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiSecondWind = SamuraiSecondWind.Checked;
+        }
+
+        private void SamuraiArmsLength_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiArmsLength = SamuraiArmsLength.Checked;
+        }
+
+        private void SamuraiLegSweep_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiLegSweep = SamuraiLegSweep.Checked;
+        }
+
+        private void SamuraiDiversion_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiDiversion = SamuraiDiversion.Checked;
+        }
+
+        private void SamuraiInvigorate_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiInvigorate = SamuraiInvigorate.Checked;
+        }
+
+        private void SamuraiBloodbath_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiBloodbath = SamuraiBloodbath.Checked;
+        }
+
+        private void SamuraiGoad_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiGoad = SamuraiGoad.Checked;
+        }
+
+        private void SamuraiFeint_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiFeint = SamuraiFeint.Checked;
+        }
+
+        private void SamuraiCrutch_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiCrutch = SamuraiCrutch.Checked;
+        }
+
+        private void SamuraiTrueNorth_CheckedChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiTrueNorth = SamuraiTrueNorth.Checked;
+        }
+
+        private void SamuraiSecondWindUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiSecondWindPct = Convert.ToInt32(SamuraiSecondWindUpDown.Value);
+        }
+
+        private void SamuraiBloodbathUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiBloodbathPct = Convert.ToInt32(SamuraiBloodbathUpDown.Value);
+        }
+
+        private void SamuraiInvigorateUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Ultima.UltSettings.SamuraiInvigoratePct = Convert.ToInt32(SamuraiInvigorateUpDown.Value);
+        }
+
+        #endregion
+
         #region Scholar Settings
 
         #region Conjurer Cross-Class
@@ -4398,6 +4485,7 @@ namespace UltimaCR.Settings.Forms
         {
             Ultima.UltSettings.WhiteMageStoneskinII = WhiteMageStoneskinII.Checked;
         }
+
 
         #endregion
 

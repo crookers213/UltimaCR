@@ -21,11 +21,6 @@ namespace UltimaCR.Rotations
             return await MySpells.FastBlade.Cast();
         }
 
-        private async Task<bool> Rampart()
-        {
-            return await MySpells.Rampart.Cast();
-        }
-
         private async Task<bool> SavageBlade()
         {
             if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
@@ -43,11 +38,6 @@ namespace UltimaCR.Rotations
         private async Task<bool> Flash()
         {
             return await MySpells.Flash.Cast();
-        }
-
-        private async Task<bool> Convalescence()
-        {
-            return await MySpells.Convalescence.Cast();
         }
 
         private async Task<bool> RiotBlade()
@@ -69,11 +59,6 @@ namespace UltimaCR.Rotations
             return await MySpells.ShieldBash.Cast();
         }
 
-        private async Task<bool> Provoke()
-        {
-            return await MySpells.Provoke.Cast();
-        }
-
         private async Task<bool> RageOfHalone()
         {
             if (ActionManager.LastSpell.Name == MySpells.SavageBlade.Name)
@@ -91,11 +76,6 @@ namespace UltimaCR.Rotations
                 return await MySpells.ShieldSwipe.Cast();
             }
             return false;
-        }
-
-        private async Task<bool> Awareness()
-        {
-            return await MySpells.Awareness.Cast();
         }
 
         private async Task<bool> Sentinel()
@@ -125,31 +105,6 @@ namespace UltimaCR.Rotations
         #endregion
 
         #region PvP Spells
-
-        private async Task<bool> Enliven()
-        {
-            return await MySpells.PvP.Enliven.Cast();
-        }
-
-        private async Task<bool> FullSwing()
-        {
-            return await MySpells.PvP.FullSwing.Cast();
-        }
-
-        private async Task<bool> GlorySlash()
-        {
-            return await MySpells.PvP.GlorySlash.Cast();
-        }
-
-        private async Task<bool> Purify()
-        {
-            return await MySpells.PvP.Purify.Cast();
-        }
-
-        private async Task<bool> Testudo()
-        {
-            return await MySpells.PvP.Testudo.Cast();
-        }
 
         #endregion
     }

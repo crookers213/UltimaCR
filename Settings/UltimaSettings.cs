@@ -1765,7 +1765,50 @@ namespace UltimaCR.Settings
 
         [Setting, DefaultValue(false)]
         public bool PaladinShieldOath { get; set; }
-        
+
+        #endregion
+
+        #region Samurai Settings
+
+        [Setting, DefaultValue(true)]
+        public bool SamuraiSecondWind { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiArmsLength { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiLegSweep { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiDiversion { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool SamuraiInvigorate { get; set; }
+
+        [Setting, DefaultValue(true)]
+        public bool SamuraiBloodbath { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiGoad { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiFeint { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiCrutch { get; set; }
+
+        [Setting, DefaultValue(false)]
+        public bool SamuraiTrueNorth { get; set; }
+
+        [Setting, DefaultValue(50)]
+        public int SamuraiSecondWindPct { get; set; }
+
+        [Setting, DefaultValue(70)]
+        public int SamuraiBloodbathPct { get; set; }
+
+        [Setting, DefaultValue(40)]
+        public int SamuraiInvigoratePct { get; set; }
+
         #endregion
 
         #region Scholar Settings

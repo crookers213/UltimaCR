@@ -279,7 +279,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> SecondWind()
         {
-            if (Core.Player.CurrentHealthPercent < 50)
+            if (Ultima.UltSettings.SamuraiSecondWind && Core.Player.CurrentHealthPercent <= Ultima.UltSettings.SamuraiSecondWindPct)
             {
                 return await MySpells.Role.SecondWind.Cast();
             }
@@ -288,7 +288,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Invigorate()
         {
-            if (Core.Player.CurrentTP <= 400)
+            if (Ultima.UltSettings.SamuraiInvigorate && Core.Player.CurrentTPPercent <= Ultima.UltSettings.SamuraiInvigoratePct)
             {
                 return await MySpells.Role.Invigorate.Cast();
             }
@@ -297,7 +297,7 @@ namespace UltimaCR.Rotations
         
         private async Task<bool> Bloodbath()
         {
-            if (Core.Player.CurrentHealthPercent < 70)
+            if (Ultima.UltSettings.SamuraiBloodbath && Core.Player.CurrentHealthPercent <= Ultima.UltSettings.SamuraiBloodbathPct)
             {
                 return await MySpells.Role.Bloodbath.Cast();
             }

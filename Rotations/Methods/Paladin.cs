@@ -15,16 +15,11 @@ namespace UltimaCR.Rotations
             get { return _mySpells ?? (_mySpells = new PaladinSpells()); }
         }
 
-        #region Class Spells
+        #region ST
 
         private async Task<bool> FastBlade()
         {
             return await MySpells.FastBlade.Cast();
-        }
-
-        private async Task<bool> Rampart()
-        {
-            return await MySpells.Rampart.Cast();
         }
 
         private async Task<bool> SavageBlade()
@@ -32,51 +27,6 @@ namespace UltimaCR.Rotations
             if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
             {
                 return await MySpells.SavageBlade.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> FightOrFlight()
-        {
-            return await MySpells.FightOrFlight.Cast();
-        }
-
-        private async Task<bool> Flash()
-        {
-            return await MySpells.Flash.Cast();
-        }
-
-        private async Task<bool> Convalescence()
-        {
-            return await MySpells.Convalescence.Cast();
-        }
-
-        private async Task<bool> RiotBlade()
-        {
-            return await MySpells.RiotBlade.Cast();
-        }
-
-        private async Task<bool> ShieldLob()
-        {
-            if (Core.Player.TargetDistance(10))
-            {
-                return await MySpells.ShieldLob.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> ShieldBash()
-        {
-            return await MySpells.ShieldBash.Cast();
-        }
-
-        private async Task<bool> Provoke()
-        {
-            var target = Helpers.NotTargetingPlayer.FirstOrDefault();
-
-            if (target != null)
-            {
-                return await MySpells.Provoke.Cast(target);
             }
             return false;
         }
@@ -90,48 +40,137 @@ namespace UltimaCR.Rotations
             return false;
         }
 
+        private async Task<bool> RiotBlade()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.FastBlade.Name)
+            {
+                if (Core.Player.CurrentManaPercent < 40 || ActionManager.HasSpell(MySpells.RoyalAuthority.Name) ||
+                    (ActionManager.HasSpell(MySpells.GoringBlade.Name) &&
+                     !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 4000)))
+                {
+                    return await MySpells.RiotBlade.Cast();
+                }
+            }
+            return false;
+        }
+
+        private async Task<bool> GoringBlade()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.RiotBlade.Name &&
+                !Core.Player.CurrentTarget.HasAura(MySpells.GoringBlade.Name, true, 4000))
+            {
+                return await MySpells.GoringBlade.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> RoyalAuthority()
+        {
+            if (ActionManager.LastSpell.Name == MySpells.RiotBlade.Name)
+            {
+                return await MySpells.RoyalAuthority.Cast();
+            }
+            return false;
+        }
+
+        private async Task<bool> ShieldLob()
+        {
+            if (Core.Player.TargetDistance(10))
+            {
+                return await MySpells.ShieldLob.Cast();
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region AoE
+
+        private async Task<bool> Flash()
+        {
+            if (Core.Player.CurrentManaPercent > 40)
+            {
+                return await MySpells.Flash.Cast();
+            }
+            return false;
+        }
+        
+        private async Task<bool> TotalEclipse()
+        {
+            if (Core.Player.CurrentTPPercent > 40)
+            {
+                return await MySpells.TotalEclipse.Cast();
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Heals
+        
+        private async Task<bool> Clemency()
+        {
+            if (Core.Player.CurrentHealthPercent < 60 && Core.Player.CurrentManaPercent > 40 && !MovementManager.IsMoving)
+            {
+                return await MySpells.Clemency.Cast();
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Off-GCD
+
         private async Task<bool> ShieldSwipe()
         {
-            if (Ultima.UltSettings.PaladinShieldSwipe &&
-                Core.Player.CurrentTPPercent > 40)
+            if (Ultima.UltSettings.PaladinShieldSwipe)
             {
                 return await MySpells.ShieldSwipe.Cast();
             }
             return false;
         }
 
-        private async Task<bool> Awareness()
+        private async Task<bool> SpiritsWithin()
         {
-            return await MySpells.Awareness.Cast();
-        }
-
-        private async Task<bool> Sentinel()
-        {
-            return await MySpells.Sentinel.Cast();
-        }
-
-        private async Task<bool> TemperedWill()
-        {
-            return await MySpells.TemperedWill.Cast();
-        }
-
-        private async Task<bool> Bulwark()
-        {
-            return await MySpells.Bulwark.Cast();
+            if (Ultima.UltSettings.PaladinSpiritsWithin)
+            {
+                return await MySpells.SpiritsWithin.Cast();
+            }
+            return false;
         }
 
         private async Task<bool> CircleOfScorn()
         {
             return await MySpells.CircleOfScorn.Cast();
         }
+        
+        private async Task<bool> Sheltron()
+        {
+            if (OathValue == 100 || (Core.Player.CurrentManaPercent < 70 && OathValue > 50))
+            {
+                return await MySpells.Sheltron.Cast();
+            }
+            return false;
+        }
 
         #endregion
 
-        #region Role Spells
+        #region Buffs
 
-        #endregion
+        private async Task<bool> FightOrFlight()
+        {
+            return await MySpells.FightOrFlight.Cast();
+        }
 
-        #region Job Spells
+        private async Task<bool> ShieldOath()
+        {
+            if (Ultima.UltSettings.PaladinShieldOath &&
+                !Core.Player.HasAura(MySpells.ShieldOath.Name))
+            {
+                return await MySpells.ShieldOath.Cast();
+            }
+            return false;
+        }
 
         private async Task<bool> SwordOath()
         {
@@ -146,88 +185,25 @@ namespace UltimaCR.Rotations
             return false;
         }
 
-        private async Task<bool> Cover()
-        {
-            return await MySpells.Cover.Cast();
-        }
-
-        private async Task<bool> ShieldOath()
-        {
-            if (Ultima.UltSettings.PaladinShieldOath &&
-                !Core.Player.HasAura(MySpells.ShieldOath.Name))
-            {
-                return await MySpells.ShieldOath.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> SpiritsWithin()
-        {
-            if (Ultima.UltSettings.PaladinSpiritsWithin)
-            {
-                return await MySpells.SpiritsWithin.Cast();
-            }
-            return false;
-        }
-
-        private async Task<bool> HallowedGround()
-        {
-            return await MySpells.HallowedGround.Cast();
-        }
-
-        private async Task<bool> Sheltron()
-        {
-            return await MySpells.Sheltron.Cast();
-        }
-
-        private async Task<bool> GoringBlade()
-        {
-            return await MySpells.GoringBlade.Cast();
-        }
-
-        private async Task<bool> DivineVeil()
-        {
-            return await MySpells.DivineVeil.Cast();
-        }
-
-        private async Task<bool> Clemency()
-        {
-            return await MySpells.Clemency.Cast();
-        }
-
-        private async Task<bool> RoyalAuthority()
-        {
-            return await MySpells.RoyalAuthority.Cast();
-        }
-
         #endregion
 
-        #region PvP Spells
+        #region Role
 
-        private async Task<bool> Enliven()
+        #endregion
+        
+        #region Custom
+        
+        private static int OathValue
         {
-            return await MySpells.PvP.Enliven.Cast();
+            get
+            {
+                return ActionResourceManager.Paladin.Oath;
+            }
         }
+        
+        #endregion
 
-        private async Task<bool> FullSwing()
-        {
-            return await MySpells.PvP.FullSwing.Cast();
-        }
-
-        private async Task<bool> GlorySlash()
-        {
-            return await MySpells.PvP.GlorySlash.Cast();
-        }
-
-        private async Task<bool> Purify()
-        {
-            return await MySpells.PvP.Purify.Cast();
-        }
-
-        private async Task<bool> Testudo()
-        {
-            return await MySpells.PvP.Testudo.Cast();
-        }
+        #region PVP
 
         #endregion
     }

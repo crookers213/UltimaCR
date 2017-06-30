@@ -177,114 +177,6 @@ namespace UltimaCR.Spells.Main
                            });
             }
         }
-        private Spell _thebalance;
-        public Spell TheBalance
-        {
-            get
-            {
-                return _thebalance ??
-                       (_thebalance =
-                           new Spell
-                           {
-                               Name = "The Balance",
-                               ID = 4401,
-                               Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Card,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _thebole;
-        public Spell TheBole
-        {
-            get
-            {
-                return _thebole ??
-                       (_thebole =
-                           new Spell
-                           {
-                               Name = "The Bole",
-                               ID = 4402,
-                               Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Card,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _thearrow;
-        public Spell TheArrow
-        {
-            get
-            {
-                return _thearrow ??
-                       (_thearrow =
-                           new Spell
-                           {
-                               Name = "The Arrow",
-                               ID = 4403,
-                               Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Card,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _thespear;
-        public Spell TheSpear
-        {
-            get
-            {
-                return _thespear ??
-                       (_thespear =
-                           new Spell
-                           {
-                               Name = "The Spear",
-                               ID = 4404,
-                               Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Card,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _theewer;
-        public Spell TheEwer
-        {
-            get
-            {
-                return _theewer ??
-                       (_theewer =
-                           new Spell
-                           {
-                               Name = "The Ewer",
-                               ID = 4405,
-                               Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Card,
-                               CastType = CastType.Self
-                           });
-            }
-        }
-        private Spell _thespire;
-        public Spell TheSpire
-        {
-            get
-            {
-                return _thespire ??
-                       (_thespire =
-                           new Spell
-                           {
-                               Name = "The Spire",
-                               ID = 4406,
-                               Level = 30,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Card,
-                               CastType = CastType.Self
-                           });
-            }
-        }
         private Spell _diurnalsect;
         public Spell DiurnalSect
         {
@@ -299,6 +191,24 @@ namespace UltimaCR.Spells.Main
                                Level = 30,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Aura,
+                               CastType = CastType.Self
+                           });
+            }
+        }
+        private Spell _undraw;
+        public Spell Undraw
+        {
+            get
+            {
+                return _undraw ??
+                       (_undraw =
+                           new Spell
+                           {
+                               Name = "Undraw",
+                               ID = 9629,
+                               Level = 30,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Buff,
                                CastType = CastType.Self
                            });
             }

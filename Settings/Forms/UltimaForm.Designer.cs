@@ -738,6 +738,24 @@
             this.MachinistRagingStrikes = new System.Windows.Forms.CheckBox();
             this.MachinistHawksEye = new System.Windows.Forms.CheckBox();
             this.MachinistQuellingStrikes = new System.Windows.Forms.CheckBox();
+            this.SamuraiSettings = new System.Windows.Forms.TabPage();
+            this.SamuraiInvigorateGroup = new UltimaCR.Settings.Forms.Design.GroupBoxDesign();
+            this.SamuraiInvigorateUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SamuraiSecondWindGroup = new UltimaCR.Settings.Forms.Design.GroupBoxDesign();
+            this.SamuraiSecondWindUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SamuraiBloodbathGroup = new UltimaCR.Settings.Forms.Design.GroupBoxDesign();
+            this.SamuraiBloodbathUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SamuraiRoleGroup = new UltimaCR.Settings.Forms.Design.GroupBoxDesign();
+            this.SamuraiTrueNorth = new System.Windows.Forms.CheckBox();
+            this.SamuraiCrutch = new System.Windows.Forms.CheckBox();
+            this.SamuraiFeint = new System.Windows.Forms.CheckBox();
+            this.SamuraiGoad = new System.Windows.Forms.CheckBox();
+            this.SamuraiBloodbath = new System.Windows.Forms.CheckBox();
+            this.SamuraiInvigorate = new System.Windows.Forms.CheckBox();
+            this.SamuraiDiversion = new System.Windows.Forms.CheckBox();
+            this.SamuraiLegSweep = new System.Windows.Forms.CheckBox();
+            this.SamuraiArmsLength = new System.Windows.Forms.CheckBox();
+            this.SamuraiSecondWind = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.UltimaBanner)).BeginInit();
             this.ClassTab.SuspendLayout();
             this.UltimaTab.SuspendLayout();
@@ -966,6 +984,14 @@
             this.MachinistCrossGroup.SuspendLayout();
             this.MachinistLancerGroup.SuspendLayout();
             this.MachinistArcherGroup.SuspendLayout();
+            this.SamuraiSettings.SuspendLayout();
+            this.SamuraiInvigorateGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SamuraiInvigorateUpDown)).BeginInit();
+            this.SamuraiSecondWindGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SamuraiSecondWindUpDown)).BeginInit();
+            this.SamuraiBloodbathGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SamuraiBloodbathUpDown)).BeginInit();
+            this.SamuraiRoleGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -9269,6 +9295,7 @@
             this.ExtraJobsSubTab.Controls.Add(this.AstrologianSettings);
             this.ExtraJobsSubTab.Controls.Add(this.DarkKnightSettings);
             this.ExtraJobsSubTab.Controls.Add(this.MachinistSettings);
+            this.ExtraJobsSubTab.Controls.Add(this.SamuraiSettings);
             this.ExtraJobsSubTab.ItemSize = new System.Drawing.Size(35, 110);
             this.ExtraJobsSubTab.Location = new System.Drawing.Point(-1, -4);
             this.ExtraJobsSubTab.Multiline = true;
@@ -10153,6 +10180,214 @@
             this.MachinistQuellingStrikes.UseVisualStyleBackColor = true;
             this.MachinistQuellingStrikes.CheckedChanged += new System.EventHandler(this.MachinistQuellingStrikes_CheckedChanged);
             // 
+            // SamuraiSettings
+            // 
+            this.SamuraiSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SamuraiSettings.Controls.Add(this.SamuraiInvigorateGroup);
+            this.SamuraiSettings.Controls.Add(this.SamuraiSecondWindGroup);
+            this.SamuraiSettings.Controls.Add(this.SamuraiBloodbathGroup);
+            this.SamuraiSettings.Controls.Add(this.SamuraiRoleGroup);
+            this.SamuraiSettings.Location = new System.Drawing.Point(114, 4);
+            this.SamuraiSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.SamuraiSettings.Name = "SamuraiSettings";
+            this.SamuraiSettings.Size = new System.Drawing.Size(567, 402);
+            this.SamuraiSettings.TabIndex = 3;
+            this.SamuraiSettings.Text = "Samurai";
+            // 
+            // SamuraiInvigorateGroup
+            // 
+            this.SamuraiInvigorateGroup.Controls.Add(this.SamuraiInvigorateUpDown);
+            this.SamuraiInvigorateGroup.ForeColor = System.Drawing.Color.White;
+            this.SamuraiInvigorateGroup.Location = new System.Drawing.Point(143, 119);
+            this.SamuraiInvigorateGroup.Name = "SamuraiInvigorateGroup";
+            this.SamuraiInvigorateGroup.Size = new System.Drawing.Size(105, 45);
+            this.SamuraiInvigorateGroup.TabIndex = 3;
+            this.SamuraiInvigorateGroup.TabStop = false;
+            this.SamuraiInvigorateGroup.Text = "Invigorate %%";
+            // 
+            // SamuraiInvigorateUpDown
+            // 
+            this.SamuraiInvigorateUpDown.Location = new System.Drawing.Point(6, 19);
+            this.SamuraiInvigorateUpDown.Name = "SamuraiInvigorateUpDown";
+            this.SamuraiInvigorateUpDown.Size = new System.Drawing.Size(93, 20);
+            this.SamuraiInvigorateUpDown.TabIndex = 0;
+            this.SamuraiInvigorateUpDown.ValueChanged += new System.EventHandler(this.SamuraiInvigorateUpDown_ValueChanged);
+            // 
+            // SamuraiSecondWindGroup
+            // 
+            this.SamuraiSecondWindGroup.Controls.Add(this.SamuraiSecondWindUpDown);
+            this.SamuraiSecondWindGroup.ForeColor = System.Drawing.Color.White;
+            this.SamuraiSecondWindGroup.Location = new System.Drawing.Point(143, 17);
+            this.SamuraiSecondWindGroup.Name = "SamuraiSecondWindGroup";
+            this.SamuraiSecondWindGroup.Size = new System.Drawing.Size(105, 45);
+            this.SamuraiSecondWindGroup.TabIndex = 2;
+            this.SamuraiSecondWindGroup.TabStop = false;
+            this.SamuraiSecondWindGroup.Text = "Second Wind %%";
+            // 
+            // SamuraiSecondWindUpDown
+            // 
+            this.SamuraiSecondWindUpDown.Location = new System.Drawing.Point(6, 19);
+            this.SamuraiSecondWindUpDown.Name = "SamuraiSecondWindUpDown";
+            this.SamuraiSecondWindUpDown.Size = new System.Drawing.Size(93, 20);
+            this.SamuraiSecondWindUpDown.TabIndex = 0;
+            this.SamuraiSecondWindUpDown.ValueChanged += new System.EventHandler(this.SamuraiSecondWindUpDown_ValueChanged);
+            // 
+            // SamuraiBloodbathGroup
+            // 
+            this.SamuraiBloodbathGroup.Controls.Add(this.SamuraiBloodbathUpDown);
+            this.SamuraiBloodbathGroup.ForeColor = System.Drawing.Color.White;
+            this.SamuraiBloodbathGroup.Location = new System.Drawing.Point(143, 68);
+            this.SamuraiBloodbathGroup.Name = "SamuraiBloodbathGroup";
+            this.SamuraiBloodbathGroup.Size = new System.Drawing.Size(105, 45);
+            this.SamuraiBloodbathGroup.TabIndex = 1;
+            this.SamuraiBloodbathGroup.TabStop = false;
+            this.SamuraiBloodbathGroup.Text = "Bloodbath %%";
+            // 
+            // SamuraiBloodbathUpDown
+            // 
+            this.SamuraiBloodbathUpDown.Location = new System.Drawing.Point(6, 19);
+            this.SamuraiBloodbathUpDown.Name = "SamuraiBloodbathUpDown";
+            this.SamuraiBloodbathUpDown.Size = new System.Drawing.Size(93, 20);
+            this.SamuraiBloodbathUpDown.TabIndex = 0;
+            this.SamuraiBloodbathUpDown.ValueChanged += new System.EventHandler(this.SamuraiBloodbathUpDown_ValueChanged);
+            // 
+            // SamuraiRoleGroup
+            // 
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiTrueNorth);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiCrutch);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiFeint);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiGoad);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiBloodbath);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiInvigorate);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiDiversion);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiLegSweep);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiArmsLength);
+            this.SamuraiRoleGroup.Controls.Add(this.SamuraiSecondWind);
+            this.SamuraiRoleGroup.ForeColor = System.Drawing.Color.White;
+            this.SamuraiRoleGroup.Location = new System.Drawing.Point(34, 3);
+            this.SamuraiRoleGroup.Name = "SamuraiRoleGroup";
+            this.SamuraiRoleGroup.Size = new System.Drawing.Size(103, 249);
+            this.SamuraiRoleGroup.TabIndex = 0;
+            this.SamuraiRoleGroup.TabStop = false;
+            this.SamuraiRoleGroup.Text = "Role";
+            // 
+            // SamuraiTrueNorth
+            // 
+            this.SamuraiTrueNorth.AutoSize = true;
+            this.SamuraiTrueNorth.Enabled = false;
+            this.SamuraiTrueNorth.Location = new System.Drawing.Point(6, 226);
+            this.SamuraiTrueNorth.Name = "SamuraiTrueNorth";
+            this.SamuraiTrueNorth.Size = new System.Drawing.Size(77, 17);
+            this.SamuraiTrueNorth.TabIndex = 9;
+            this.SamuraiTrueNorth.Text = "True North";
+            this.SamuraiTrueNorth.UseVisualStyleBackColor = true;
+            this.SamuraiTrueNorth.CheckedChanged += new System.EventHandler(this.SamuraiTrueNorth_CheckedChanged);
+            // 
+            // SamuraiCrutch
+            // 
+            this.SamuraiCrutch.AutoSize = true;
+            this.SamuraiCrutch.Enabled = false;
+            this.SamuraiCrutch.Location = new System.Drawing.Point(6, 203);
+            this.SamuraiCrutch.Name = "SamuraiCrutch";
+            this.SamuraiCrutch.Size = new System.Drawing.Size(57, 17);
+            this.SamuraiCrutch.TabIndex = 8;
+            this.SamuraiCrutch.Text = "Crutch";
+            this.SamuraiCrutch.UseVisualStyleBackColor = true;
+            this.SamuraiCrutch.CheckedChanged += new System.EventHandler(this.SamuraiCrutch_CheckedChanged);
+            // 
+            // SamuraiFeint
+            // 
+            this.SamuraiFeint.AutoSize = true;
+            this.SamuraiFeint.Enabled = false;
+            this.SamuraiFeint.Location = new System.Drawing.Point(6, 180);
+            this.SamuraiFeint.Name = "SamuraiFeint";
+            this.SamuraiFeint.Size = new System.Drawing.Size(49, 17);
+            this.SamuraiFeint.TabIndex = 7;
+            this.SamuraiFeint.Text = "Feint";
+            this.SamuraiFeint.UseVisualStyleBackColor = true;
+            this.SamuraiFeint.CheckedChanged += new System.EventHandler(this.SamuraiFeint_CheckedChanged);
+            // 
+            // SamuraiGoad
+            // 
+            this.SamuraiGoad.AutoSize = true;
+            this.SamuraiGoad.Enabled = false;
+            this.SamuraiGoad.Location = new System.Drawing.Point(6, 157);
+            this.SamuraiGoad.Name = "SamuraiGoad";
+            this.SamuraiGoad.Size = new System.Drawing.Size(52, 17);
+            this.SamuraiGoad.TabIndex = 6;
+            this.SamuraiGoad.Text = "Goad";
+            this.SamuraiGoad.UseVisualStyleBackColor = true;
+            this.SamuraiGoad.CheckedChanged += new System.EventHandler(this.SamuraiGoad_CheckedChanged);
+            // 
+            // SamuraiBloodbath
+            // 
+            this.SamuraiBloodbath.AutoSize = true;
+            this.SamuraiBloodbath.Location = new System.Drawing.Point(6, 134);
+            this.SamuraiBloodbath.Name = "SamuraiBloodbath";
+            this.SamuraiBloodbath.Size = new System.Drawing.Size(74, 17);
+            this.SamuraiBloodbath.TabIndex = 5;
+            this.SamuraiBloodbath.Text = "Bloodbath";
+            this.SamuraiBloodbath.UseVisualStyleBackColor = true;
+            this.SamuraiBloodbath.CheckedChanged += new System.EventHandler(this.SamuraiBloodbath_CheckedChanged);
+            // 
+            // SamuraiInvigorate
+            // 
+            this.SamuraiInvigorate.AutoSize = true;
+            this.SamuraiInvigorate.Location = new System.Drawing.Point(6, 111);
+            this.SamuraiInvigorate.Name = "SamuraiInvigorate";
+            this.SamuraiInvigorate.Size = new System.Drawing.Size(73, 17);
+            this.SamuraiInvigorate.TabIndex = 4;
+            this.SamuraiInvigorate.Text = "Invigorate";
+            this.SamuraiInvigorate.UseVisualStyleBackColor = true;
+            this.SamuraiInvigorate.CheckedChanged += new System.EventHandler(this.SamuraiInvigorate_CheckedChanged);
+            // 
+            // SamuraiDiversion
+            // 
+            this.SamuraiDiversion.AutoSize = true;
+            this.SamuraiDiversion.Enabled = false;
+            this.SamuraiDiversion.Location = new System.Drawing.Point(6, 88);
+            this.SamuraiDiversion.Name = "SamuraiDiversion";
+            this.SamuraiDiversion.Size = new System.Drawing.Size(70, 17);
+            this.SamuraiDiversion.TabIndex = 3;
+            this.SamuraiDiversion.Text = "Diversion";
+            this.SamuraiDiversion.UseVisualStyleBackColor = true;
+            this.SamuraiDiversion.CheckedChanged += new System.EventHandler(this.SamuraiDiversion_CheckedChanged);
+            // 
+            // SamuraiLegSweep
+            // 
+            this.SamuraiLegSweep.AutoSize = true;
+            this.SamuraiLegSweep.Enabled = false;
+            this.SamuraiLegSweep.Location = new System.Drawing.Point(6, 65);
+            this.SamuraiLegSweep.Name = "SamuraiLegSweep";
+            this.SamuraiLegSweep.Size = new System.Drawing.Size(80, 17);
+            this.SamuraiLegSweep.TabIndex = 2;
+            this.SamuraiLegSweep.Text = "Leg Sweep";
+            this.SamuraiLegSweep.UseVisualStyleBackColor = true;
+            this.SamuraiLegSweep.CheckedChanged += new System.EventHandler(this.SamuraiLegSweep_CheckedChanged);
+            // 
+            // SamuraiArmsLength
+            // 
+            this.SamuraiArmsLength.AutoSize = true;
+            this.SamuraiArmsLength.Enabled = false;
+            this.SamuraiArmsLength.Location = new System.Drawing.Point(6, 42);
+            this.SamuraiArmsLength.Name = "SamuraiArmsLength";
+            this.SamuraiArmsLength.Size = new System.Drawing.Size(87, 17);
+            this.SamuraiArmsLength.TabIndex = 1;
+            this.SamuraiArmsLength.Text = "Arm\'s Length";
+            this.SamuraiArmsLength.UseVisualStyleBackColor = true;
+            this.SamuraiArmsLength.CheckedChanged += new System.EventHandler(this.SamuraiArmsLength_CheckedChanged);
+            // 
+            // SamuraiSecondWind
+            // 
+            this.SamuraiSecondWind.AutoSize = true;
+            this.SamuraiSecondWind.Location = new System.Drawing.Point(6, 19);
+            this.SamuraiSecondWind.Name = "SamuraiSecondWind";
+            this.SamuraiSecondWind.Size = new System.Drawing.Size(91, 17);
+            this.SamuraiSecondWind.TabIndex = 0;
+            this.SamuraiSecondWind.Text = "Second Wind";
+            this.SamuraiSecondWind.UseVisualStyleBackColor = true;
+            this.SamuraiSecondWind.CheckedChanged += new System.EventHandler(this.SamuraiSecondWind_CheckedChanged);
+            // 
             // UltimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10559,6 +10794,15 @@
             this.MachinistLancerGroup.PerformLayout();
             this.MachinistArcherGroup.ResumeLayout(false);
             this.MachinistArcherGroup.PerformLayout();
+            this.SamuraiSettings.ResumeLayout(false);
+            this.SamuraiInvigorateGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SamuraiInvigorateUpDown)).EndInit();
+            this.SamuraiSecondWindGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SamuraiSecondWindUpDown)).EndInit();
+            this.SamuraiBloodbathGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SamuraiBloodbathUpDown)).EndInit();
+            this.SamuraiRoleGroup.ResumeLayout(false);
+            this.SamuraiRoleGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -11275,5 +11519,23 @@
         private System.Windows.Forms.CheckBox ArcherFlamingArrow;
         private Design.GroupBoxDesign BardCooldownGroup;
         private System.Windows.Forms.CheckBox BardFlamingArrow;
+        private System.Windows.Forms.TabPage SamuraiSettings;
+        private Design.GroupBoxDesign SamuraiRoleGroup;
+        private System.Windows.Forms.CheckBox SamuraiTrueNorth;
+        private System.Windows.Forms.CheckBox SamuraiCrutch;
+        private System.Windows.Forms.CheckBox SamuraiFeint;
+        private System.Windows.Forms.CheckBox SamuraiGoad;
+        private System.Windows.Forms.CheckBox SamuraiBloodbath;
+        private System.Windows.Forms.CheckBox SamuraiInvigorate;
+        private System.Windows.Forms.CheckBox SamuraiDiversion;
+        private System.Windows.Forms.CheckBox SamuraiLegSweep;
+        private System.Windows.Forms.CheckBox SamuraiArmsLength;
+        private System.Windows.Forms.CheckBox SamuraiSecondWind;
+        private Design.GroupBoxDesign SamuraiBloodbathGroup;
+        private System.Windows.Forms.NumericUpDown SamuraiBloodbathUpDown;
+        private Design.GroupBoxDesign SamuraiInvigorateGroup;
+        private System.Windows.Forms.NumericUpDown SamuraiInvigorateUpDown;
+        private Design.GroupBoxDesign SamuraiSecondWindGroup;
+        private System.Windows.Forms.NumericUpDown SamuraiSecondWindUpDown;
     }
 }

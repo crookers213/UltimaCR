@@ -15,6 +15,24 @@ namespace UltimaCR.Spells.Main
             get { return _pvp ?? (_pvp = new PVP.PaladinSpells.Pvp()); }
         }
 
+        private Spell _shieldoath;
+        public Spell ShieldOath
+        {
+            get
+            {
+                return _shieldoath ??
+                       (_shieldoath =
+                           new Spell
+                           {
+                               Name = "Shield Oath",
+                               ID = 28,
+                               Level = 30,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.Aura,
+                               CastType = CastType.Self
+                           });
+            }
+        }
         private Spell _swordoath;
         public Spell SwordOath
         {
@@ -26,7 +44,7 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Sword Oath",
                                ID = 26,
-                               Level = 30,
+                               Level = 35,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Aura,
                                CastType = CastType.Self
@@ -44,28 +62,10 @@ namespace UltimaCR.Spells.Main
                            {
                                Name = "Cover",
                                ID = 27,
-                               Level = 35,
+                               Level = 40,
                                GCDType = GCDType.On,
                                SpellType = SpellType.Defensive,
                                CastType = CastType.Target
-                           });
-            }
-        }
-        private Spell _shieldoath;
-        public Spell ShieldOath
-        {
-            get
-            {
-                return _shieldoath ??
-                       (_shieldoath =
-                           new Spell
-                           {
-                               Name = "Shield Oath",
-                               ID = 28,
-                               Level = 40,
-                               GCDType = GCDType.On,
-                               SpellType = SpellType.Aura,
-                               CastType = CastType.Self
                            });
             }
         }
@@ -84,6 +84,24 @@ namespace UltimaCR.Spells.Main
                                GCDType = GCDType.Off,
                                SpellType = SpellType.Interrupt,
                                CastType = CastType.Target
+                           });
+            }
+        }
+        private Spell _totaleclipse;
+        public Spell TotalEclipse
+        {
+            get
+            {
+                return _totaleclipse ??
+                       (_totaleclipse =
+                           new Spell
+                           {
+                               Name = "Total Eclipse",
+                               ID = 7381,
+                               Level = 46,
+                               GCDType = GCDType.On,
+                               SpellType = SpellType.AoE,
+                               CastType = CastType.Self
                            });
             }
         }

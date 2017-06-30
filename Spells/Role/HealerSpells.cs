@@ -17,7 +17,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Cleric Stance",
                                    ID = 7567,
                                    Level = 8,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Buff,
                                    CastType = CastType.Self
                                });
@@ -89,7 +89,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Lucid Dreaming",
                                    ID = 7562,
                                    Level = 24,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Buff,
                                    CastType = CastType.Self
                                });
@@ -107,7 +107,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Swiftcast",
                                    ID = 7561,
                                    Level = 32,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Buff,
                                    CastType = CastType.Self
                                });
@@ -125,7 +125,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Eye for an Eye",
                                    ID = 7569,
                                    Level = 36,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Defensive,
                                    CastType = CastType.Target
                                });
@@ -143,7 +143,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Largesse",
                                    ID = 7570,
                                    Level = 40,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Buff,
                                    CastType = CastType.Self
                                });
@@ -161,7 +161,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Surecast",
                                    ID = 7559,
                                    Level = 44,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Defensive,
                                    CastType = CastType.Self
                                });
@@ -179,7 +179,7 @@ namespace UltimaCR.Spells.Role
                                    Name = "Rescue",
                                    ID = 7571,
                                    Level = 48,
-                                   GCDType = GCDType.Off,
+                                   GCDType = GCDType.On,
                                    SpellType = SpellType.Defensive,
                                    CastType = CastType.Target
                                });
